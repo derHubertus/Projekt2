@@ -1,4 +1,4 @@
-package sample;
+package AppLauncher;
 
 public class Controller {
 }
