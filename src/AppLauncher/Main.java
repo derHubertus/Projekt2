@@ -1,5 +1,7 @@
 package AppLauncher;
 
+import AppLauncher.Data.Game;
+import AppLauncher.Data.Plattform;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,6 +35,22 @@ public class Main extends Application {
         //primaryStage.show();
         initRootLayout();
 
+
+        testData();
+
+    }
+
+    private void testData() {
+
+        Plattform steam = new Plattform("steam");
+        steam.addGame(new Game("Battlefield", "c:\\BF.exe"));
+        steam.addGame(new Game("CSGO", "c:\\counterstrike.exe"));
+        steam.save();
+
+        Plattform uplay = new Plattform("uplay");
+        uplay.addGame(new Game("Rainbow", "c:\\R6.exe"));
+        uplay.addGame(new Game("Wildlands", "c:\\counterstrike.exe"));
+        uplay.save();
     }
 
     public void initRootLayout(){
