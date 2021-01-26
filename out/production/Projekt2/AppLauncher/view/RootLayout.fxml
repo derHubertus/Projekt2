@@ -50,7 +50,7 @@
          <bottom>
             <HBox prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="lbGameAdd" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" />
+                  <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" />
                </children>
                <padding>
                   <Insets left="15.0" top="10.0" />
