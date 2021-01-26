@@ -35,6 +35,7 @@ public class Main extends Application {
     private void doSmth() {
 
         File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        System.out.println("Maurice stinkt immer noch :(");
 
     }
 
