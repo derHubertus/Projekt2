@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+
 public class Main extends Application {
     private FileChooser fileChooser;
     Stage primaryStage;
@@ -35,6 +36,7 @@ public class Main extends Application {
     private void doSmth() {
 
         File selectedFile = fileChooser.showOpenDialog(primaryStage);
+        System.out.println("Maurice stinkt :(");
 
     }
 
