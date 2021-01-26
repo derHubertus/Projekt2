@@ -3,12 +3,11 @@ package AppLauncher.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import AppLauncher.Main;
-
-import java.io.File;
 
 public class RootLayoutController {
 
@@ -28,6 +27,8 @@ public class RootLayoutController {
     private ListView<String> lvGameList;
     @FXML
     private AnchorPane apGameInfo;
+    @FXML
+    private ImageView ivImageSet;
 
 
     private Main main;
@@ -93,6 +94,19 @@ public class RootLayoutController {
     @FXML
     public void lbGamePlayHover(){
         changeColorHover(lbGamePlay);
+    }
+    @FXML
+    public void paneGetImageFromWeb(){
+
+        //ImageView img = new ImageView("https://cdn.cloudflare.steamstatic.com/steam/apps/apps/730/ss_9db552fd461722f1569e3292d8f2ea654c8ffdef.jpg");
+        //gpImageSet.setStyle("-fx-background-image: url('https://cdn.cloudflare.steamstatic.com/steam/apps/apps/730/ss_9db552fd461722f1569e3292d8f2ea654c8ffdef.jpg')");
+        Image img = new Image("images/imageimage.jpg");
+        ivImageSet.setImage(img);
+
+    }
+    public void urlStart(String s){
+        String url = "https://cdn.cloudflare.steamstatic.com/steam/apps/"+s;
+        System.out.println(url);
     }
 
 
