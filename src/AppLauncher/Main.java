@@ -53,3 +53,6 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+//json file zum speichern der Files -> Liste an Spielobjekten
+//spielobjekt: namen, pfad.exe, plattform, bild(?)

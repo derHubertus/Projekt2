@@ -26,6 +26,7 @@ public class RootLayoutController {
     private Label lbGameNameDisplay;
     @FXML
     private ListView<String> lvGameList;
+
     @FXML
     private AnchorPane apGameInfo;
 
@@ -89,6 +90,13 @@ public class RootLayoutController {
     public void lbGamePlayHover(){
         changeColorHover(lbGamePlay);
     }
+
+    public void moo(){
+
+
+    }
+
+
 
 
 
