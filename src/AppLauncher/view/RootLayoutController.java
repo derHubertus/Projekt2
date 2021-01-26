@@ -29,6 +29,7 @@ public class RootLayoutController {
     @FXML
     private AnchorPane apGameInfo;
 
+
     private Main main;
 
     public void initialize(){
@@ -39,6 +40,10 @@ public class RootLayoutController {
         this.main = main;
     }
 
+    @FXML
+    public void lbGameAddClicked(){
+        main.getDirPath();
+    }
     @FXML
     public void lbSteamClicked(){
         lvGameList.getItems().addAll();
@@ -89,6 +94,9 @@ public class RootLayoutController {
     public void lbGamePlayHover(){
         changeColorHover(lbGamePlay);
     }
+
+
+
 
 
 

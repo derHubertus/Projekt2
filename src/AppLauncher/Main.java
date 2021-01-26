@@ -3,14 +3,17 @@ package AppLauncher;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import AppLauncher.view.RootLayoutController;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -18,6 +21,7 @@ public class Main extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
     private ObservableList<String> gameList = FXCollections.observableArrayList();
+    private FileChooser fileChooser = new FileChooser();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -47,6 +51,10 @@ public class Main extends Application {
         }catch(IOException io){
             io.printStackTrace();
         }
+    }
+
+    public void getDirPath(){
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);
     }
 
     public static void main(String[] args) {
