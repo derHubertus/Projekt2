@@ -96,18 +96,21 @@ public class RootLayoutController {
         changeColorHover(lbGamePlay);
     }
     @FXML
-    public void paneGetImageFromWeb(){
-
-        //ImageView img = new ImageView("https://cdn.cloudflare.steamstatic.com/steam/apps/apps/730/ss_9db552fd461722f1569e3292d8f2ea654c8ffdef.jpg");
-        //gpImageSet.setStyle("-fx-background-image: url('https://cdn.cloudflare.steamstatic.com/steam/apps/apps/730/ss_9db552fd461722f1569e3292d8f2ea654c8ffdef.jpg')");
-        Image img = new Image("images/imageimage.jpg");
-        ivImageSet.setImage(img);
-
-    }
-    public void urlStart(String s){
+    public String urlStart(String s){
         String url = "https://cdn.cloudflare.steamstatic.com/steam/apps/"+s;
-        System.out.println(url);
+        return url;
     }
+    @FXML
+    public void paneGetImageFromWeb(){
+        String plusurl = "730/ss_2fcee01bace72bc47a2ad0ba82620588239e93df.jpg";
+        String url = urlStart(plusurl);
+        Image img = new Image(url, apGameInfo.getHeight(), apGameInfo.getWidth(), true, false);
+        ivImageSet.fitWidthProperty().bind(apGameInfo.widthProperty());
+        ivImageSet.fitHeightProperty().bind(apGameInfo.heightProperty());
+        ivImageSet.setPreserveRatio(true);
+        ivImageSet.setImage(img);
+    }
+
 
 
 

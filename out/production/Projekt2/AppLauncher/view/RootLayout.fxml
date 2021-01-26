@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppLauncher.view.RootLayoutController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppLauncher.view.RootLayoutController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -62,11 +62,11 @@
             <ListView fx:id="lvGameList" prefHeight="295.0" prefWidth="239.0" BorderPane.alignment="CENTER" />
          </left>
          <center>
-            <AnchorPane fx:id="apGameInfo" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="106.0" text="Label" AnchorPane.leftAnchor="14.0" />
-                  <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="123.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" AnchorPane.leftAnchor="14.0" />
-                  <ImageView fx:id="ivImageSet" fitHeight="241.0" fitWidth="264.0" layoutX="64.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ivImageSet" cache="true" cacheHint="QUALITY" fitHeight="617.0" fitWidth="1041.0" layoutY="-1.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                  <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="215.0" text="Label" AnchorPane.leftAnchor="14.0" />
+                  <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" AnchorPane.leftAnchor="14.0" />
                </children>
             </AnchorPane>
          </center>
