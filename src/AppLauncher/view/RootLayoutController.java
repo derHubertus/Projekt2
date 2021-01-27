@@ -1,8 +1,11 @@
 package AppLauncher.view;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -29,18 +32,31 @@ public class RootLayoutController {
     private AnchorPane apGameInfo;
     @FXML
     private ImageView ivImageSet;
-
+    @FXML
+    private MenuBar menuBar;
+    @FXML
+    private HBox hboxTop;
+    @FXML
+    private HBox hboxBottom;
+    @FXML
+    private AnchorPane apBackGround;
+    @FXML
+    private MenuItem mbItemClose;
+    @FXML
+    private MenuItem mbItemLight;
+    @FXML
+    private MenuItem mbItemDark;
+    @FXML
+    private MenuItem mbItemAbout;
 
     private Main main;
 
     public void initialize(){
         lvGameList = new ListView<>();
     }
-
     public void setMain(Main main){
         this.main = main;
     }
-
     @FXML
     public void lbGameAddClicked(){
         main.getDirPath();
@@ -109,6 +125,32 @@ public class RootLayoutController {
         ivImageSet.fitHeightProperty().bind(apGameInfo.heightProperty());
         ivImageSet.setPreserveRatio(true);
         ivImageSet.setImage(img);
+    }
+    @FXML
+    public void switchSkinDark(){
+        apGameInfo.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        hboxBottom.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        hboxTop.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        //lvGameList.setStyle("-fx-background-color: blue; -fx-text-fill: black;");;
+        apBackGround.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        menuBar.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        mbItemAbout.setStyle("-fx-background-color : #D3D3D3;");
+        mbItemClose.setStyle("-fx-background-color : #D3D3D3;");
+        mbItemDark.setStyle("-fx-background-color : #D3D3D3;");
+        mbItemLight.setStyle("-fx-background-color : #D3D3D3;");
+    }
+    @FXML
+    public void switchSkinLight(){
+        apGameInfo.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        hboxBottom.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        hboxTop.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        //lvGameList.setStyle("-fx-background-color: blue; -fx-text-fill: black;");;
+        apBackGround.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        menuBar.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        mbItemAbout.setStyle("-fx-background-color : #FFFFFF;");
+        mbItemClose.setStyle("-fx-background-color : #FFFFFF;");
+        mbItemDark.setStyle("-fx-background-color : #FFFFFF;");
+        mbItemLight.setStyle("-fx-background-color : #FFFFFF;");
     }
 
 
