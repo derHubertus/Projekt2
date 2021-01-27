@@ -1,5 +1,7 @@
 package AppLauncher.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
@@ -7,20 +9,14 @@ public class Game {
     private String path;
     private String nickName;
     private String logoPath = "";
+    private List<String> picturePaths = new ArrayList<>();
 
 
     public Game(String name, String path) {
         this.name = name;
-
         this.path = path;
     }
 
-    public Game(String name, String path, String nickName) {
-        this.name = name;
-        this.nickName = nickName;
-        this.path = path;
-
-    }
 
     //setter-methoden
     public void setPath(String newPath) {
@@ -33,6 +29,14 @@ public class Game {
 
     public void setLogoPath(String newLogoPath) {
         this.logoPath = newLogoPath;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setPicturePaths(List<String> picturePaths) {
+        this.picturePaths = picturePaths;
     }
 
 
@@ -53,6 +57,12 @@ public class Game {
     public String getLogoPath() {
         return this.logoPath;
     }
+
+    public List<String> getPicturePaths() {
+        return picturePaths;
+    }
+
+
 
 
 }

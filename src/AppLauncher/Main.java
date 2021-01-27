@@ -43,6 +43,13 @@ public class Main extends Application {
     private void testData() {
 
         Plattform steam = new Plattform("steam");
+
+        steam.load();
+
+        for (Game g : steam.getGames()){
+            System.out.println(g.getName());
+        }
+        /*
         steam.addGame(new Game("Battlefield", "c:\\BF.exe"));
         steam.addGame(new Game("CSGO", "c:\\counterstrike.exe"));
         steam.save();
@@ -51,6 +58,8 @@ public class Main extends Application {
         uplay.addGame(new Game("Rainbow", "c:\\R6.exe"));
         uplay.addGame(new Game("Wildlands", "c:\\counterstrike.exe"));
         uplay.save();
+
+         */
     }
 
     public void initRootLayout(){
