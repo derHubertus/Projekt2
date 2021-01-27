@@ -1,5 +1,9 @@
 package AppLauncher.view;
 
+import AppLauncher.Data.Game;
+import AppLauncher.Data.Plattform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -27,7 +31,7 @@ public class RootLayoutController {
     @FXML
     private Label lbGameNameDisplay;
     @FXML
-    private ListView<String> lvGameList;
+    private ListView<Game> lvGameList = new ListView<>();
 
     @FXML
     private AnchorPane apGameInfo;
@@ -51,10 +55,37 @@ public class RootLayoutController {
     private MenuItem mbItemAbout;
 
     private Main main;
+    private Plattform steam;
+    private Plattform origin;
+    private Plattform uplay;
+    //private ObservableList<Game> liste = FXCollections.observableArrayList();
 
     public void initialize(){
-        lvGameList = new ListView<>();
+       // lvGameList = new ListView<>();
+
+        steam = new Plattform("steam");
+        origin = new Plattform("origin");
+        uplay = new Plattform("uplay");
+        System.out.println(steam.getGames2());
+
+        fillSteam();
+
     }
+
+    @FXML
+    public void fillSteam(){
+        lvGameList.getItems().clear();
+        lvGameList.setItems(steam.getGames2());
+    }
+
+
+
+
+
+
+
+
+
     public void setMain(Main main){
         this.main = main;
     }
