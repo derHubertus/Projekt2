@@ -6,68 +6,87 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppLauncher.view.RootLayoutController">
+<AnchorPane fx:id="apBackGround" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppLauncher.view.RootLayoutController">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="spImageView" fitHeight="736.0" fitWidth="1294.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/imageimage.jpg" />
+               </image>
+            </ImageView>
+            <BorderPane opacity="0.75" prefHeight="400.0" prefWidth="600.0">
+               <top>
+                  <HBox fx:id="hboxTop" prefHeight="64.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lbSteam" onMouseEntered="#lbSteamHover" onMouseExited="#lbSteamDefault" text="STEAM" />
+                        <Label fx:id="lbOrigin" onMouseEntered="#lbOriginHover" onMouseExited="#lbOriginDefault" text="ORIGIN" />
+                        <Label fx:id="lbUplay" onMouseEntered="#lbUplayHover" onMouseExited="#lbUplayDefault" text="UPLAY" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="10.0" top="35.0" />
+                     </padding>
+                  </HBox>
+               </top>
+               <bottom>
+                  <HBox fx:id="hboxBottom" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" />
+                     </children>
+                     <padding>
+                        <Insets left="15.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </bottom>
+               <left>
+                  <ListView fx:id="lvGameList" prefHeight="295.0" prefWidth="239.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="ivImageSet" cache="true" cacheHint="QUALITY" fitHeight="617.0" fitWidth="1041.0" layoutY="-1.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="215.0" text="Label" AnchorPane.leftAnchor="14.0" />
+                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" AnchorPane.leftAnchor="14.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <image>
+                              <Image url="@../images/logoinside.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="mbItemClose" mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Skin">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="mbItemLight" mnemonicParsing="false" onAction="#switchSkinLight" text="Light" />
+                  <MenuItem fx:id="mbItemDark" mnemonicParsing="false" onAction="#switchSkinDark" text="Dark" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="mbItemAbout" mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <BorderPane layoutX="-1.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <HBox prefHeight="64.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="lbSteam" onMouseEntered="#lbSteamHover" onMouseExited="#lbSteamDefault" text="STEAM" />
-                  <Label fx:id="lbOrigin" onMouseEntered="#lbOriginHover" onMouseExited="#lbOriginDefault" text="ORIGIN" />
-                  <Label fx:id="lbUplay" onMouseEntered="#lbUplayHover" onMouseExited="#lbUplayDefault" text="UPLAY" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="10.0" left="15.0" right="10.0" top="35.0" />
-               </padding>
-            </HBox>
-         </top>
-         <bottom>
-            <HBox prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" />
-               </children>
-               <padding>
-                  <Insets left="15.0" top="10.0" />
-               </padding>
-            </HBox>
-         </bottom>
-         <left>
-            <ListView fx:id="lvGameList" prefHeight="295.0" prefWidth="239.0" BorderPane.alignment="CENTER" />
-         </left>
-         <center>
-            <AnchorPane fx:id="apGameInfo" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="106.0" text="Label" AnchorPane.leftAnchor="14.0" />
-                  <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="123.0" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" AnchorPane.leftAnchor="14.0" />
-               </children>
-            </AnchorPane>
-         </center>
-      </BorderPane>
    </children>
 </AnchorPane>

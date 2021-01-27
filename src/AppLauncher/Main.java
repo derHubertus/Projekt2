@@ -3,6 +3,7 @@ package AppLauncher;
 import AppLauncher.Data.Game;
 import AppLauncher.Data.Plattform;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -76,6 +77,13 @@ public class Main extends Application {
             primaryStage.show();
             RootLayoutController controller = loader.getController();
             controller.setMain(this);
+            //Steam-Objekt
+            //Steam-JSON-Loader
+            //Origin-Objekt
+            //Origin-JSON-Loader
+            //Uplay-Objekt
+            //Uplay-JSON-Loader
+            //Nach Knopfdruck ListView befüllen
         }catch(IOException io){
             io.printStackTrace();
         }
