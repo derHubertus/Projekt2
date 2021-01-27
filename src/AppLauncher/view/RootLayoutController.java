@@ -65,6 +65,10 @@ public class RootLayoutController {
     public void lbSteamClicked(){
         lvGameList.getItems().addAll();
     }
+
+
+
+
     public void changeColorHover(Label label){
         label.setTextFill(Color.GRAY);
     }
@@ -134,6 +138,7 @@ public class RootLayoutController {
         //lvGameList.setStyle("-fx-background-color: blue; -fx-text-fill: black;");;
         apBackGround.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         menuBar.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        //ivImageSet.setImage(new Image("AppLauncher/images/imageimage.jpg"));
         mbItemAbout.setStyle("-fx-background-color : #D3D3D3;");
         mbItemClose.setStyle("-fx-background-color : #D3D3D3;");
         mbItemDark.setStyle("-fx-background-color : #D3D3D3;");
