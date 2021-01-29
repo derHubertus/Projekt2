@@ -33,7 +33,7 @@ public class RootLayoutController {
     @FXML
     private Label lbGameNameDisplay;
     @FXML
-    private ListView<String> lvGameList;
+    private ListView<String> lvGameList = new ListView<>();
     @FXML
     private AnchorPane apGameInfo;
     @FXML
@@ -58,14 +58,15 @@ public class RootLayoutController {
 
     private Main main;
     private ObservableList<String> obGameList = FXCollections.observableArrayList();
-    private Plattform plattformSteam = new Plattform("Steam");
-    private Plattform plattformOrigin = new Plattform("Origin");
-    private Plattform plattformUplay = new Plattform("Uplay");
-
+    private Plattform plattformSteam;
+    private Plattform plattformOrigin;
+    private Plattform plattformUplay;
 
     public void initialize(){
 
-        lvGameList = new ListView<>();
+        plattformUplay = new Plattform("Uplay");
+        plattformOrigin = new Plattform("Origin");
+        plattformSteam = new Plattform("Steam");
 
     }
     public void setMain(Main main){
@@ -77,17 +78,30 @@ public class RootLayoutController {
     }
     @FXML
     public void lbSteamClicked(){
-
-        /*for (Game g : this.plattformSteam.getGames()){
+        obGameList.clear();
+        plattformSteam.load();
+        for (Game g : this.plattformSteam.getGames()){
             obGameList.add(g.getName());
-        }*/
-        obGameList.add("Penis");
-        obGameList.add("Vagina");
-        obGameList.add("Maurice");
-        //lvGameList.setItems(obGameList);
-        lvGameList.getItems().addAll("Maurice","Eryk","Hubert","Yannic","Daniel");
-        lvGameList.setVisible(true);
-
+        }
+        lvGameList.setItems(obGameList);
+    }
+    @FXML
+    public void lbOriginClicked(){
+        obGameList.clear();
+        plattformOrigin.load();
+        for (Game g : this.plattformOrigin.getGames()){
+            obGameList.add(g.getName());
+        }
+        lvGameList.setItems(obGameList);
+    }
+    @FXML
+    public void lbUplayClicked(){
+        obGameList.clear();
+        plattformUplay.load();
+        for (Game g : this.plattformUplay.getGames()){
+            obGameList.add(g.getName());
+        }
+        lvGameList.setItems(obGameList);
     }
 
     public void changeColorHover(Label label){
