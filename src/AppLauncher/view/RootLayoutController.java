@@ -1,5 +1,9 @@
 package AppLauncher.view;
 
+import AppLauncher.Data.Game;
+import AppLauncher.Data.Plattform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -11,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import AppLauncher.Main;
+
+import java.util.Locale;
 
 public class RootLayoutController {
 
@@ -28,7 +34,6 @@ public class RootLayoutController {
     private Label lbGameNameDisplay;
     @FXML
     private ListView<String> lvGameList;
-
     @FXML
     private AnchorPane apGameInfo;
     @FXML
@@ -50,10 +55,18 @@ public class RootLayoutController {
     @FXML
     private MenuItem mbItemAbout;
 
+
     private Main main;
+    private ObservableList<String> obGameList = FXCollections.observableArrayList();
+    private Plattform plattformSteam = new Plattform("Steam");
+    private Plattform plattformOrigin = new Plattform("Origin");
+    private Plattform plattformUplay = new Plattform("Uplay");
+
 
     public void initialize(){
+
         lvGameList = new ListView<>();
+
     }
     public void setMain(Main main){
         this.main = main;
@@ -64,11 +77,18 @@ public class RootLayoutController {
     }
     @FXML
     public void lbSteamClicked(){
-        lvGameList.getItems().addAll();
+
+        /*for (Game g : this.plattformSteam.getGames()){
+            obGameList.add(g.getName());
+        }*/
+        obGameList.add("Penis");
+        obGameList.add("Vagina");
+        obGameList.add("Maurice");
+        //lvGameList.setItems(obGameList);
+        lvGameList.getItems().addAll("Maurice","Eryk","Hubert","Yannic","Daniel");
+        lvGameList.setVisible(true);
+
     }
-
-
-
 
     public void changeColorHover(Label label){
         label.setTextFill(Color.GRAY);

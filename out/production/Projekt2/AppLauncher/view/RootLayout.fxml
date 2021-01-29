@@ -26,7 +26,7 @@
                <top>
                   <HBox fx:id="hboxTop" prefHeight="64.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lbSteam" onMouseEntered="#lbSteamHover" onMouseExited="#lbSteamDefault" text="STEAM" />
+                        <Label fx:id="lbSteam" onMouseClicked="#lbSteamClicked" onMouseEntered="#lbSteamHover" onMouseExited="#lbSteamDefault" text="STEAM" />
                         <Label fx:id="lbOrigin" onMouseEntered="#lbOriginHover" onMouseExited="#lbOriginDefault" text="ORIGIN" />
                         <Label fx:id="lbUplay" onMouseEntered="#lbUplayHover" onMouseExited="#lbUplayDefault" text="UPLAY" />
                      </children>
@@ -49,7 +49,7 @@
                   </HBox>
                </bottom>
                <left>
-                  <ListView fx:id="lvGameList" prefHeight="295.0" prefWidth="239.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
+                  <ListView fx:id="lvGameList" fixedCellSize="20.0" prefHeight="295.0" prefWidth="239.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
