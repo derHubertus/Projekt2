@@ -1,6 +1,7 @@
 package AppLauncher.view;
 
 import AppLauncher.Data.Game;
+import AppLauncher.Data.GameCell;
 import AppLauncher.Data.Plattform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,6 +66,10 @@ public class RootLayoutController {
         plattformUplay = new Plattform("Uplay");
         plattformOrigin = new Plattform("Origin");
         plattformSteam = new Plattform("Steam");
+        lbSteamClicked();
+        lvGameList.setCellFactory(value -> {
+            return new GameCell();
+        });
 
     }
     public void setMain(Main main){
@@ -76,6 +81,7 @@ public class RootLayoutController {
     }
     @FXML
     public void lbSteamClicked(){
+
         lvGameList.setItems(plattformSteam.getGames2());
     }
     @FXML
