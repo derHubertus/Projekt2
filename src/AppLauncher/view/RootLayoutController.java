@@ -55,9 +55,7 @@ public class RootLayoutController {
     @FXML
     private MenuItem mbItemAbout;
 
-
     private Main main;
-    private ObservableList<Game> obGameList = FXCollections.observableArrayList();
     private Plattform plattformSteam;
     private Plattform plattformOrigin;
     private Plattform plattformUplay;
@@ -78,35 +76,16 @@ public class RootLayoutController {
     }
     @FXML
     public void lbSteamClicked(){
-
-        obGameList.clear();
-        plattformSteam.load();
-        /*for (Game g : this.plattformSteam.getGames()){
-            obGameList.add(g.getName());
-        }*/
-        obGameList.addAll(this.plattformSteam.getGames());
-        lvGameList.setItems(obGameList);
-
+        lvGameList.setItems(plattformSteam.getGames2());
     }
     @FXML
     public void lbOriginClicked(){
-        obGameList.clear();
-        plattformOrigin.load();
-        /*for (Game g : this.plattformOrigin.getGames()){
-            obGameList.add(g.getName());
-        }*/
-        lvGameList.setItems(obGameList);
+        lvGameList.setItems(plattformOrigin.getGames2());
     }
     @FXML
     public void lbUplayClicked(){
-        obGameList.clear();
-        plattformUplay.load();
-        /*for (Game g : this.plattformUplay.getGames()){
-            obGameList.add(g.getName());
-        }*/
-        lvGameList.setItems(obGameList);
+        lvGameList.setItems(plattformUplay.getGames2());
     }
-
     public void changeColorHover(Label label){
         label.setTextFill(Color.GRAY);
     }
