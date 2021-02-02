@@ -33,7 +33,7 @@ public class RootLayoutController {
     @FXML
     private Label lbGameNameDisplay;
     @FXML
-    private ListView<String> lvGameList = new ListView<>();
+    private ListView<Game> lvGameList = new ListView<>();
     @FXML
     private AnchorPane apGameInfo;
     @FXML
@@ -57,7 +57,7 @@ public class RootLayoutController {
 
 
     private Main main;
-    private ObservableList<String> obGameList = FXCollections.observableArrayList();
+    private ObservableList<Game> obGameList = FXCollections.observableArrayList();
     private Plattform plattformSteam;
     private Plattform plattformOrigin;
     private Plattform plattformUplay;
@@ -78,29 +78,32 @@ public class RootLayoutController {
     }
     @FXML
     public void lbSteamClicked(){
+
         obGameList.clear();
         plattformSteam.load();
-        for (Game g : this.plattformSteam.getGames()){
+        /*for (Game g : this.plattformSteam.getGames()){
             obGameList.add(g.getName());
-        }
+        }*/
+        obGameList.addAll(this.plattformSteam.getGames());
         lvGameList.setItems(obGameList);
+
     }
     @FXML
     public void lbOriginClicked(){
         obGameList.clear();
         plattformOrigin.load();
-        for (Game g : this.plattformOrigin.getGames()){
+        /*for (Game g : this.plattformOrigin.getGames()){
             obGameList.add(g.getName());
-        }
+        }*/
         lvGameList.setItems(obGameList);
     }
     @FXML
     public void lbUplayClicked(){
         obGameList.clear();
         plattformUplay.load();
-        for (Game g : this.plattformUplay.getGames()){
+        /*for (Game g : this.plattformUplay.getGames()){
             obGameList.add(g.getName());
-        }
+        }*/
         lvGameList.setItems(obGameList);
     }
 
