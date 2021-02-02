@@ -42,7 +42,7 @@ public class Main extends Application {
     }
 
     private void testData() {
-
+/*
         Plattform steam = new Plattform("steam");
 
         steam.load();
@@ -50,7 +50,7 @@ public class Main extends Application {
         for (Game g : steam.getGames()){
             System.out.println(g.getName());
         }
-        /*
+
         steam.addGame(new Game("Battlefield", "c:\\BF.exe"));
         steam.addGame(new Game("CSGO", "c:\\counterstrike.exe"));
         steam.save();

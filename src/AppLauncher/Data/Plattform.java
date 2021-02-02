@@ -1,6 +1,8 @@
 package AppLauncher.Data;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -16,6 +18,7 @@ import java.util.Map;
 public class Plattform {
 
 
+    private ObservableList<Game> games2 = FXCollections.observableArrayList();
     private List<Game> games = new ArrayList<>();
     private static int z = 0;
     private String name;
@@ -23,6 +26,7 @@ public class Plattform {
 
     public Plattform(String launcher) {
         this.name = launcher;
+        this.load();
     }
 
 
@@ -77,6 +81,7 @@ public class Plattform {
 
                     Game game = new Game(name, path);
                     game.setLogoPath(logoPath);
+                    games2.add(game);
                     games.add(game);
 
                 } else {
@@ -106,6 +111,10 @@ public class Plattform {
 
     public List<Game> getGames() {
         return this.games;
+    }
+
+    public  ObservableList<Game> getGames2(){
+        return this.games2;
     }
 
 
