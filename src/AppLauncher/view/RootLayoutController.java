@@ -1,6 +1,7 @@
 package AppLauncher.view;
 
 import AppLauncher.Data.Game;
+import AppLauncher.Data.GameCell;
 import AppLauncher.Data.Plattform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import AppLauncher.Main;
+
+import java.util.Locale;
 
 public class RootLayoutController {
 
@@ -32,7 +35,6 @@ public class RootLayoutController {
     private Label lbGameNameDisplay;
     @FXML
     private ListView<Game> lvGameList = new ListView<>();
-
     @FXML
     private AnchorPane apGameInfo;
     @FXML
@@ -55,37 +57,21 @@ public class RootLayoutController {
     private MenuItem mbItemAbout;
 
     private Main main;
-    private Plattform steam;
-    private Plattform origin;
-    private Plattform uplay;
-    //private ObservableList<Game> liste = FXCollections.observableArrayList();
+    private Plattform plattformSteam;
+    private Plattform plattformOrigin;
+    private Plattform plattformUplay;
 
     public void initialize(){
-       // lvGameList = new ListView<>();
 
-        steam = new Plattform("steam");
-        origin = new Plattform("origin");
-        uplay = new Plattform("uplay");
-        System.out.println(steam.getGames2());
-
-        fillSteam();
+        plattformUplay = new Plattform("Uplay");
+        plattformOrigin = new Plattform("Origin");
+        plattformSteam = new Plattform("Steam");
+        lbSteamClicked();
+        lvGameList.setCellFactory(value -> {
+            return new GameCell();
+        });
 
     }
-
-    @FXML
-    public void fillSteam(){
-        lvGameList.getItems().clear();
-        lvGameList.setItems(steam.getGames2());
-    }
-
-
-
-
-
-
-
-
-
     public void setMain(Main main){
         this.main = main;
     }
@@ -95,12 +81,17 @@ public class RootLayoutController {
     }
     @FXML
     public void lbSteamClicked(){
-        lvGameList.getItems().addAll();
+
+        lvGameList.setItems(plattformSteam.getGames2());
     }
-
-
-
-
+    @FXML
+    public void lbOriginClicked(){
+        lvGameList.setItems(plattformOrigin.getGames2());
+    }
+    @FXML
+    public void lbUplayClicked(){
+        lvGameList.setItems(plattformUplay.getGames2());
+    }
     public void changeColorHover(Label label){
         label.setTextFill(Color.GRAY);
     }
