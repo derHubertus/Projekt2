@@ -21,6 +21,8 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+
+
     private Stage primaryStage;
     private AnchorPane rootLayout;
     private ObservableList<String> gameList = FXCollections.observableArrayList();
@@ -89,14 +91,20 @@ public class Main extends Application {
         }
     }
 
-    public void getDirPath(){
-        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+    public File getDirPath(){
+        return fileChooser.showOpenDialog(primaryStage);
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
 }
+
+
 
 //json file zum speichern der Files -> Liste an Spielobjekten
 //spielobjekt: namen, pfad.exe, plattform, bild(?)

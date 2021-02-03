@@ -3,21 +3,22 @@ package AppLauncher.view;
 import AppLauncher.Data.Game;
 import AppLauncher.Data.GameCell;
 import AppLauncher.Data.Plattform;
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import AppLauncher.Main;
+import javafx.stage.FileChooser;
 
-import java.util.Locale;
+import java.io.File;
+import java.util.*;
 
 public class RootLayoutController {
 
@@ -60,6 +61,11 @@ public class RootLayoutController {
     private Plattform plattformSteam;
     private Plattform plattformOrigin;
     private Plattform plattformUplay;
+    private String chosenPlattform;
+    private FileChooser fileChooser = new FileChooser();
+    private ObservableList<Game> clearList = FXCollections.observableArrayList();
+
+
 
     public void initialize(){
 
@@ -67,9 +73,12 @@ public class RootLayoutController {
         plattformOrigin = new Plattform("Origin");
         plattformSteam = new Plattform("Steam");
         lbSteamClicked();
+
         lvGameList.setCellFactory(value -> {
             return new GameCell();
         });
+
+
 
     }
     public void setMain(Main main){
@@ -77,20 +86,74 @@ public class RootLayoutController {
     }
     @FXML
     public void lbGameAddClicked(){
-        main.getDirPath();
+        File file = main.getDirPath();
+
+
+        if (!file.canExecute()){
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.initOwner(main.getPrimaryStage());
+            alert.setTitle("Achtung");
+            alert.setHeaderText("Bitte eine .exe Datei wählen");
+            alert.showAndWait();
+        }else{
+            String path = file.getPath();
+            String name = getNameFromPath(path);
+
+            switch (chosenPlattform){
+                case "steam":
+                    plattformSteam.addGame(new Game(name, path));
+                    plattformSteam.save();
+                    return;
+
+                case "uplay":
+                    plattformUplay.addGame(new Game(name, path));
+                    plattformUplay.save();
+                    return;
+
+                case "origin":
+                    plattformOrigin.addGame(new Game(name, path));
+                    plattformOrigin.save();
+                    return;
+
+                default:
+                    return;
+            }
+        }
+
+
+
+
     }
     @FXML
     public void lbSteamClicked(){
-
+        lvGameList.getItems().removeAll();
+        chosenPlattform = "steam";
         lvGameList.setItems(plattformSteam.getGames2());
+        /*lvGameList.setCellFactory(value -> {
+            return new GameCell();
+        });*/
+
     }
     @FXML
     public void lbOriginClicked(){
+        lvGameList.getItems().removeAll();
+        chosenPlattform = "origin";
         lvGameList.setItems(plattformOrigin.getGames2());
+        /*lvGameList.setCellFactory(value -> {
+            return new GameCell();
+        });*/
+
     }
     @FXML
     public void lbUplayClicked(){
+        lvGameList.getItems().removeAll();
+        chosenPlattform = "uplay";
         lvGameList.setItems(plattformUplay.getGames2());
+        /*lvGameList.setCellFactory(value -> {
+            return new GameCell();
+        });*/
+
     }
     public void changeColorHover(Label label){
         label.setTextFill(Color.GRAY);
@@ -183,6 +246,21 @@ public class RootLayoutController {
         mbItemDark.setStyle("-fx-background-color : #FFFFFF;");
         mbItemLight.setStyle("-fx-background-color : #FFFFFF;");
     }
+
+    public String getNameFromPath(String path){
+
+        String[] list = path.split("\\\\");
+        System.out.println(Arrays.toString(list));
+        String name = list[list.length-1];
+
+        name = name.substring(0, name.length()-4); //.exe weg
+
+        return name;
+
+
+    }
+
+
 
 
 

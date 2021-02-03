@@ -31,7 +31,8 @@ public class Plattform {
 
 
     public void addGame(Game game) {
-        this.games.add(game);
+        //this.games.add(game);
+        this.games2.add(game);
         z++;
     }
 
@@ -39,7 +40,7 @@ public class Plattform {
 
         int counter = 0;
         JSONObject jsonObject = new JSONObject();
-        for (Game g : games) {
+        for (Game g : games2) {
 
             Map<String, String> map = new HashMap<>();
             map.put("path", g.getPath());
@@ -97,9 +98,7 @@ public class Plattform {
 
     }
 
-    public void setGames(List<Game> games) {
-        this.games = games;
-    }
+
 
     public String getName() {
         return name;
@@ -109,8 +108,8 @@ public class Plattform {
         this.name = name;
     }
 
-    public List<Game> getGames() {
-        return this.games;
+    public ObservableList<Game> getGames() {
+        return this.games2;
     }
 
     public  ObservableList<Game> getGames2(){

@@ -9,7 +9,10 @@ public class GameCell extends ListCell<Game> {
         super.updateItem(item, empty);
         if (item!=null&!empty){
             setText(item.getName());
+        }else{
+            setText("");
         }
     }
 
 }
+//
