@@ -8,5 +8,15 @@
     "path": "c:\\counterstrike.exe",
     "logoPath": "",
     "name": "CSGO"
+  },
+  "2": {
+    "path": "D:\\Tom Clancy's Rainbow Six Siege\\RainbowSix.exe",
+    "logoPath": "",
+    "name": "RainbowSix"
+  },
+  "3": {
+    "path": "F:\\SteamLibrary\\steamapps\\common\\Path of Exile\\PathOfExileSteam.exe",
+    "logoPath": "",
+    "name": "PathOfExileSteam"
   }
 }
