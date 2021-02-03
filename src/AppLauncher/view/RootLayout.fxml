@@ -41,7 +41,7 @@
                <bottom>
                   <HBox fx:id="hboxBottom" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" />
+                        <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" textFill="#eb0707" />
                      </children>
                      <padding>
                         <Insets left="15.0" top="10.0" />
@@ -49,14 +49,14 @@
                   </HBox>
                </bottom>
                <left>
-                  <ListView fx:id="lvGameList" fixedCellSize="20.0" prefHeight="295.0" prefWidth="239.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
+                  <ListView fx:id="lvGameList" fixedCellSize="20.0" onMouseClicked="#listViewClick" prefHeight="295.0" prefWidth="239.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fx:id="ivImageSet" cache="true" cacheHint="QUALITY" fitHeight="617.0" fitWidth="1041.0" layoutY="-1.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" smooth="false" />
-                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="215.0" text="Label" AnchorPane.leftAnchor="14.0" />
-                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" AnchorPane.leftAnchor="14.0" />
+                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="215.0" onMouseClicked="#launchGame" text="Label" textFill="#f80000" AnchorPane.leftAnchor="14.0" />
+                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" textFill="#f80909" AnchorPane.leftAnchor="14.0" />
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <image>
                               <Image url="@../images/logoinside.png" />

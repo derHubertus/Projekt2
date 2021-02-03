@@ -1,5 +1,6 @@
 package AppLauncher.Data;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +61,16 @@ public class Game {
 
     public List<String> getPicturePaths() {
         return picturePaths;
+    }
+
+    public void launchGame(){
+        try {
+            Process p = Runtime.getRuntime().exec(this.path);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
     }
 
 

@@ -116,5 +116,10 @@ public class Plattform {
         return this.games2;
     }
 
+    public void deleteGame(Game game){
+        games2.remove(game);
+
+    }
+
 
 }

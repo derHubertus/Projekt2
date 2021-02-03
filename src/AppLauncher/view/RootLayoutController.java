@@ -1,5 +1,6 @@
 package AppLauncher.view;
 
+import AppLauncher.Data.EditBox;
 import AppLauncher.Data.Game;
 import AppLauncher.Data.GameCell;
 import AppLauncher.Data.Plattform;
@@ -12,6 +13,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import AppLauncher.Main;
@@ -58,9 +61,12 @@ public class RootLayoutController {
     private MenuItem mbItemAbout;
 
     private Main main;
-    private Plattform plattformSteam;
-    private Plattform plattformOrigin;
-    private Plattform plattformUplay;
+
+
+
+    private Plattform plattformSteam = new Plattform("Steam");
+    private Plattform plattformOrigin = new Plattform("Origin");
+    private Plattform plattformUplay = new Plattform("Uplay");
     private String chosenPlattform;
     private FileChooser fileChooser = new FileChooser();
     private ObservableList<Game> clearList = FXCollections.observableArrayList();
@@ -69,14 +75,12 @@ public class RootLayoutController {
 
     public void initialize(){
 
-        plattformUplay = new Plattform("Uplay");
-        plattformOrigin = new Plattform("Origin");
-        plattformSteam = new Plattform("Steam");
         lbSteamClicked();
 
         lvGameList.setCellFactory(value -> {
             return new GameCell();
         });
+
 
 
 
@@ -246,7 +250,37 @@ public class RootLayoutController {
         mbItemDark.setStyle("-fx-background-color : #FFFFFF;");
         mbItemLight.setStyle("-fx-background-color : #FFFFFF;");
     }
+    @FXML
+    public void launchGame(){
 
+        try{
+            lvGameList.getSelectionModel().getSelectedItem().launchGame();
+            System.out.println("Hier sind wir schonmal");
+        }catch (Exception e){
+            System.out.println("Nix ausgewählt");
+        }
+
+
+    }
+    @FXML
+    public void listViewClick(MouseEvent event){
+
+        double x = event.getScreenX();
+        double y = event.getScreenY();
+        if(lvGameList.getSelectionModel().isEmpty()){
+            return;
+        }
+
+        if(event.getButton() == MouseButton.SECONDARY){
+            System.out.println("\n\n");
+            System.out.println(plattformSteam.getGames());
+            EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, x, y);
+            System.out.println(plattformSteam.getGames());
+            plattformSteam.save();
+        }
+
+
+    }
     public String getNameFromPath(String path){
 
         String[] list = path.split("\\\\");
@@ -259,6 +293,30 @@ public class RootLayoutController {
 
 
     }
+    public Plattform getPlattformSteam() {
+        return plattformSteam;
+    }
+
+    public void setPlattformSteam(Plattform plattformSteam) {
+        this.plattformSteam = plattformSteam;
+    }
+
+    public Plattform getPlattformOrigin() {
+        return plattformOrigin;
+    }
+
+    public void setPlattformOrigin(Plattform plattformOrigin) {
+        this.plattformOrigin = plattformOrigin;
+    }
+
+    public Plattform getPlattformUplay() {
+        return plattformUplay;
+    }
+
+    public void setPlattformUplay(Plattform plattformUplay) {
+        this.plattformUplay = plattformUplay;
+    }
+
 
 
 
