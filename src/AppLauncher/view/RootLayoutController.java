@@ -19,6 +19,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import AppLauncher.Main;
 import javafx.stage.FileChooser;
+import org.w3c.dom.css.RGBColor;
 
 import java.io.File;
 import java.util.*;
@@ -163,7 +164,7 @@ public class RootLayoutController {
         label.setTextFill(Color.ORANGERED);
     }
     public void changeColorDefault(Label label){
-        label.setTextFill(Color.ORANGE);
+        label.setTextFill(Color.rgb(255,146,0));
     }
     @FXML
     public void lbSteamHover(){
