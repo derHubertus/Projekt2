@@ -44,6 +44,8 @@ public class RootLayoutController {
     @FXML
     private ImageView ivImageSet;
     @FXML
+    private ImageView spImageView;
+    @FXML
     private MenuBar menuBar;
     @FXML
     private HBox hboxTop;
@@ -63,14 +65,12 @@ public class RootLayoutController {
     private Main main;
 
 
-
     private Plattform plattformSteam = new Plattform("Steam");
     private Plattform plattformOrigin = new Plattform("Origin");
     private Plattform plattformUplay = new Plattform("Uplay");
     private String chosenPlattform;
     private FileChooser fileChooser = new FileChooser();
     private ObservableList<Game> clearList = FXCollections.observableArrayList();
-
 
 
     public void initialize(){
@@ -81,7 +81,11 @@ public class RootLayoutController {
             return new GameCell();
         });
 
-
+        //spImageView.fitWidthProperty().bind(apBackGround.widthProperty());
+        //spImageView.setFitWidth(apBackGround.getWidth());
+        //spImageView.fitHeightProperty().bind(apBackGround.heightProperty());
+        //spImageView.setFitHeight(apBackGround.getHeight());
+        spImageView.setPreserveRatio(false);
 
 
     }
@@ -124,10 +128,6 @@ public class RootLayoutController {
                     return;
             }
         }
-
-
-
-
     }
     @FXML
     public void lbSteamClicked(){
@@ -160,10 +160,10 @@ public class RootLayoutController {
 
     }
     public void changeColorHover(Label label){
-        label.setTextFill(Color.GRAY);
+        label.setTextFill(Color.ORANGERED);
     }
     public void changeColorDefault(Label label){
-        label.setTextFill(Color.BLACK);
+        label.setTextFill(Color.ORANGE);
     }
     @FXML
     public void lbSteamHover(){

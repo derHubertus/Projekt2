@@ -12,23 +12,33 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="apBackGround" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppLauncher.view.RootLayoutController">
+<AnchorPane fx:id="apBackGround" maxHeight="750.0" maxWidth="1280.0" minHeight="750.0" minWidth="1280.0" prefHeight="750.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppLauncher.view.RootLayoutController">
    <children>
-      <StackPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane maxHeight="725.0" maxWidth="1280.0" minHeight="725.0" minWidth="1280.0" prefHeight="725.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="spImageView" fitHeight="736.0" fitWidth="1294.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="spImageView" fitHeight="750.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/imageimage.jpg" />
+                  <Image url="@../images/apBack.jpeg" />
                </image>
             </ImageView>
-            <BorderPane opacity="0.75" prefHeight="400.0" prefWidth="600.0">
+            <BorderPane opacity="0.75" prefHeight="725.0" prefWidth="1280.0">
                <top>
                   <HBox fx:id="hboxTop" prefHeight="64.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lbSteam" onMouseClicked="#lbSteamClicked" onMouseEntered="#lbSteamHover" onMouseExited="#lbSteamDefault" text="STEAM" />
-                        <Label fx:id="lbOrigin" onMouseClicked="#lbOriginClicked" onMouseEntered="#lbOriginHover" onMouseExited="#lbOriginDefault" text="ORIGIN" />
-                        <Label fx:id="lbUplay" onMouseClicked="#lbUplayClicked" onMouseEntered="#lbUplayHover" onMouseExited="#lbUplayDefault" text="UPLAY" />
+                        <Label fx:id="lbSteam" onMouseClicked="#lbSteamClicked" onMouseEntered="#lbSteamHover" onMouseExited="#lbSteamDefault" text="STEAM" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbOrigin" onMouseClicked="#lbOriginClicked" onMouseEntered="#lbOriginHover" onMouseExited="#lbOriginDefault" text="ORIGIN" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbUplay" onMouseClicked="#lbUplayClicked" onMouseEntered="#lbUplayHover" onMouseExited="#lbUplayDefault" text="UPLAY" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -39,9 +49,12 @@
                   </HBox>
                </top>
                <bottom>
-                  <HBox fx:id="hboxBottom" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                  <HBox fx:id="hboxBottom" prefHeight="41.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" textFill="#eb0707" />
+                        <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" textFill="#eb0707">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                      </children>
                      <padding>
                         <Insets left="15.0" top="10.0" />
@@ -56,7 +69,10 @@
                      <children>
                         <ImageView fx:id="ivImageSet" cache="true" cacheHint="QUALITY" fitHeight="617.0" fitWidth="1041.0" layoutY="-1.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" smooth="false" />
                         <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="215.0" onMouseClicked="#launchGame" text="Label" textFill="#f80000" AnchorPane.leftAnchor="14.0" />
-                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" textFill="#f80909" AnchorPane.leftAnchor="14.0" />
+                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" textFill="#f80909" AnchorPane.leftAnchor="14.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <image>
                               <Image url="@../images/logoinside.png" />
