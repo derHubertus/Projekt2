@@ -62,6 +62,8 @@ public class RootLayoutController {
     private MenuItem mbItemDark;
     @FXML
     private MenuItem mbItemAbout;
+    @FXML
+    private StackPane sp;
 
     private Main main;
 
@@ -139,6 +141,19 @@ public class RootLayoutController {
             return new GameCell();
         });*/
 
+    }
+    @FXML
+    private void handleAbout(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Hoomak Launcher™ - About");
+        alert.setHeaderText("Laucher for all your games!");
+        alert.setContentText("Made by DC&BI Team");
+
+        alert.showAndWait();
+    }
+    @FXML
+    private void handleExit(){
+        System.exit(0);
     }
     @FXML
     public void lbOriginClicked(){
@@ -222,34 +237,22 @@ public class RootLayoutController {
         ivImageSet.setImage(img);
     }
     @FXML
-    public void switchSkinDark(){
-        //apGameInfo.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxBottom.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxTop.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        lvGameList.setStyle("-fx-background-color: white;");
-
-        //apBackGround.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        menuBar.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        //ivImageSet.setImage(new Image("AppLauncher/images/imageimage.jpg"));
-        mbItemAbout.setStyle("-fx-background-color : #D3D3D3;");
-        mbItemClose.setStyle("-fx-background-color : #D3D3D3;");
-        mbItemDark.setStyle("-fx-background-color : #D3D3D3;");
-        mbItemLight.setStyle("-fx-background-color : #D3D3D3;");
-
+    public void switchSkinBlack(){
+        /*File file = new File("AppLauncher/images/apBack.jpeg");
+        Image image = new Image(file.toURI().toString());
+        //spImageView = new ImageView(image);
+        spImageView.setImage(image);*/
     }
     @FXML
-    public void switchSkinLight(){
-        //apGameInfo.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxBottom.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxTop.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        lvGameList.setStyle("-fx-background-color: blue;");
-        apBackGround.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        menuBar.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
-        mbItemAbout.setStyle("-fx-background-color : #FFFFFF;");
-        mbItemClose.setStyle("-fx-background-color : #FFFFFF;");
-        mbItemDark.setStyle("-fx-background-color : #FFFFFF;");
-        mbItemLight.setStyle("-fx-background-color : #FFFFFF;");
+    public void switchSkinWhite(){
+        /*Image img = new Image("AppLauncher/images/whiteBack.jpg");
+        ImageView imgView = new ImageView(img);
+        sp.getChildren().add(imgView);*/
+    }
+    @FXML
+    public void switchSkinRed(){
+        /*Image img = new Image(getClass().getResourceAsStream("AppLauncher/images/redBack.jpg"));
+        spImageView.setImage(img);*/
     }
     @FXML
     public void launchGame(){

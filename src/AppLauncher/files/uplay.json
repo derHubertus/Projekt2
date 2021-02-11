@@ -8,5 +8,10 @@
     "path": "c:\\counterstrike.exe",
     "logoPath": "",
     "name": "Wildlands"
+  },
+  "2": {
+    "path": "C:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\csgo.exe",
+    "logoPath": "",
+    "name": "csgo"
   }
 }
