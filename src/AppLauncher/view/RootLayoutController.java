@@ -92,9 +92,11 @@ public class RootLayoutController {
 
 
     }
+
     public void setMain(Main main){
         this.main = main;
     }
+
     @FXML
     public void lbGameAddClicked(){
         File file = main.getDirPath();
@@ -132,6 +134,7 @@ public class RootLayoutController {
             }
         }
     }
+
     @FXML
     public void lbSteamClicked(){
         lvGameList.getItems().removeAll();
@@ -142,6 +145,7 @@ public class RootLayoutController {
         });*/
 
     }
+
     @FXML
     private void handleAbout(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -151,10 +155,12 @@ public class RootLayoutController {
 
         alert.showAndWait();
     }
+
     @FXML
     private void handleExit(){
         System.exit(0);
     }
+
     @FXML
     public void lbOriginClicked(){
         lvGameList.getItems().removeAll();
@@ -165,6 +171,7 @@ public class RootLayoutController {
         });*/
 
     }
+
     @FXML
     public void lbUplayClicked(){
         lvGameList.getItems().removeAll();
@@ -175,6 +182,7 @@ public class RootLayoutController {
         });*/
 
     }
+
     public String getImageColor(String s){
         if (s.contains("red")){
             return "red";
@@ -186,170 +194,31 @@ public class RootLayoutController {
             return "black";
         }
     }
+
     public void changeColorHover(Label label){
         label.setTextFill(Color.ORANGERED);
     }
+
     public void changeColorDefault(Label label){
         label.setTextFill(Color.rgb(255,146,0));
     }
+
     public void changeColorWhite(Label label) {
         label.setTextFill(Color.DODGERBLUE);
     }
+
     public void changeColorWhiteHover(Label label) {
         label.setTextFill(Color.MIDNIGHTBLUE);
     }
+
     public void changeColorRed(Label label){
         label.setTextFill(Color.WHITE);
     }
+
     public void changeColorRedHover(Label label){
         label.setTextFill(Color.DARKORANGE);
     }
-    @FXML
-    public void lbSteamHover(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbSteam);
-        }
-        else if(color.equals("white")){
-            changeColorWhiteHover(lbSteam);
-        }
-        else if(color.equals("black")){
-            changeColorHover(lbSteam);
-        }
-    }
-    @FXML
-    public void lbSteamDefault(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbSteam);
-        }
-        else if(color.equals("white")){
-            changeColorWhite(lbSteam);
-        }
-        else if(color.equals("black")){
-            changeColorDefault(lbSteam);
-        }
-    }
-    @FXML
-    public void lbOriginHover(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbOrigin);
-        }
-        else if(color.equals("white")){
-            changeColorWhiteHover(lbOrigin);
-        }
-        else if(color.equals("black")){
-            changeColorHover(lbOrigin);
-        }
-    }
-    @FXML
-    public void lbOriginDefault(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbOrigin);
-        }
-        else if(color.equals("white")){
-            changeColorWhite(lbOrigin);
-        }
-        else if(color.equals("black")){
-            changeColorDefault(lbOrigin);
-        }
-    }
-    @FXML
-    public void lbUplayHover(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbUplay);
-        }
-        else if(color.equals("white")){
-            changeColorWhiteHover(lbUplay);
-        }
-        else if(color.equals("black")){
-            changeColorHover(lbUplay);
-        }
-    }
-    @FXML
-    public void lbUplayDefault(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbUplay);
-        }
-        else if(color.equals("white")){
-            changeColorWhite(lbUplay);
-        }
-        else if(color.equals("black")){
-            changeColorDefault(lbUplay);
-        }
-    }
-    @FXML
-    public void lbGameAddHover(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbGameAdd);
-        }
-        else if(color.equals("white")){
-            changeColorWhiteHover(lbGameAdd);
-        }
-        else if(color.equals("black")){
-            changeColorHover(lbGameAdd);
-        };
-    }
-    @FXML
-    public void lbGameAddDefault(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbGameAdd);
-        }
-        else if(color.equals("white")){
-            changeColorWhite(lbGameAdd);
-        }
-        else if(color.equals("black")){
-            changeColorDefault(lbGameAdd);
-        }
-    }
-    @FXML
-    public void lbGamePlayDefault(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbGamePlay);
-        }
-        else if(color.equals("white")){
-            changeColorWhite(lbGamePlay);
-        }
-        else if(color.equals("black")){
-            changeColorDefault(lbGamePlay);
-        }
-    }
-    @FXML
-    public void lbGamePlayHover(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbGamePlay);
-        }
-        else if(color.equals("white")){
-            changeColorWhiteHover(lbGamePlay);
-        }
-        else if(color.equals("black")){
-            changeColorHover(lbGamePlay);
-        }
-    }
-    @FXML
-    public String urlStart(String s){
-        String url = "https://cdn.cloudflare.steamstatic.com/steam/apps/"+s;
-        return url;
-    }
-    @FXML
-    public void paneGetImageFromWeb(){
-        String plusurl = "730/ss_2fcee01bace72bc47a2ad0ba82620588239e93df.jpg";
-        String url = urlStart(plusurl);
-        Image img = new Image(url, apGameInfo.getHeight(), apGameInfo.getWidth(), true, false);
-        ivImageSet.fitWidthProperty().bind(apGameInfo.widthProperty());
-        ivImageSet.fitHeightProperty().bind(apGameInfo.heightProperty());
-        ivImageSet.setPreserveRatio(true);
-        ivImageSet.setImage(img);
-    }
-    @FXML
+
     public void changeAllLabelColor(String s){
         if (s.equals("white")){
             changeColorWhite(lbSteam);
@@ -376,6 +245,164 @@ public class RootLayoutController {
             changeColorDefault(lbGameNameDisplay);
         }
     }
+
+    @FXML
+    public void lbSteamHover(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbSteam);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbSteam);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbSteam);
+        }
+    }
+
+    @FXML
+    public void lbSteamDefault(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbSteam);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbSteam);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbSteam);
+        }
+    }
+
+    @FXML
+    public void lbOriginHover(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbOrigin);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbOrigin);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbOrigin);
+        }
+    }
+
+    @FXML
+    public void lbOriginDefault(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbOrigin);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbOrigin);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbOrigin);
+        }
+    }
+
+    @FXML
+    public void lbUplayHover(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbUplay);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbUplay);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbUplay);
+        }
+    }
+
+    @FXML
+    public void lbUplayDefault(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbUplay);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbUplay);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbUplay);
+        }
+    }
+
+    @FXML
+    public void lbGameAddHover(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbGameAdd);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbGameAdd);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbGameAdd);
+        };
+    }
+
+    @FXML
+    public void lbGameAddDefault(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbGameAdd);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbGameAdd);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbGameAdd);
+        }
+    }
+
+    @FXML
+    public void lbGamePlayDefault(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbGamePlay);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbGamePlay);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbGamePlay);
+        }
+    }
+
+    @FXML
+    public void lbGamePlayHover(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbGamePlay);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbGamePlay);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbGamePlay);
+        }
+    }
+
+    @FXML
+    public String urlStart(String s){
+        String url = "https://cdn.cloudflare.steamstatic.com/steam/apps/"+s;
+        return url;
+    }
+
+    @FXML
+    public void paneGetImageFromWeb(){
+        String plusurl = "730/ss_2fcee01bace72bc47a2ad0ba82620588239e93df.jpg";
+        String url = urlStart(plusurl);
+        Image img = new Image(url, apGameInfo.getHeight(), apGameInfo.getWidth(), true, false);
+        ivImageSet.fitWidthProperty().bind(apGameInfo.widthProperty());
+        ivImageSet.fitHeightProperty().bind(apGameInfo.heightProperty());
+        ivImageSet.setPreserveRatio(true);
+        ivImageSet.setImage(img);
+    }
+
     @FXML
     public void switchSkinBlack(){
         //Wir wissen nicht wieso, aber es funktioniert besser als mit apBackGround, weil es weniger verpixelt ist.
@@ -383,18 +410,21 @@ public class RootLayoutController {
         spImageView.setImage(img);
         changeAllLabelColor("black");
     }
+
     @FXML
     public void switchSkinWhite(){
         Image img = new Image("AppLauncher/images/whiteBack.jpg");
         spImageView.setImage(img);
         changeAllLabelColor("white");
     }
+
     @FXML
     public void switchSkinRed(){
         Image img = new Image("AppLauncher/images/redBack.jpg");
         spImageView.setImage(img);
         changeAllLabelColor("red");
     }
+
     @FXML
     public void launchGame(){
 
@@ -404,9 +434,8 @@ public class RootLayoutController {
         }catch (Exception e){
             System.out.println("Nix ausgewählt");
         }
-
-
     }
+
     @FXML
     public void listViewClick(MouseEvent event){
 
@@ -426,6 +455,7 @@ public class RootLayoutController {
 
 
     }
+
     public String getNameFromPath(String path){
 
         String[] list = path.split("\\\\");
@@ -438,6 +468,7 @@ public class RootLayoutController {
 
 
     }
+
     public Plattform getPlattformSteam() {
         return plattformSteam;
     }
