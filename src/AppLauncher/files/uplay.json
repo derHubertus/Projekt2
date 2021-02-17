@@ -13,5 +13,10 @@
     "path": "C:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\csgo.exe",
     "logoPath": "",
     "name": "csgo"
+  },
+  "3": {
+    "path": "C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Trackmania\\Trackmania.exe",
+    "logoPath": "",
+    "name": "Trackmania"
   }
 }

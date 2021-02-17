@@ -37,6 +37,8 @@ public class RootLayoutController {
     @FXML
     private Label lbGamePlay;
     @FXML
+    private Label lbAddCustomImage;
+    @FXML
     private Label lbGameNameDisplay;
     @FXML
     private ListView<Game> lvGameList = new ListView<>();
@@ -83,20 +85,19 @@ public class RootLayoutController {
         lvGameList.setCellFactory(value -> {
             return new GameCell();
         });
-
-        //spImageView.fitWidthProperty().bind(apBackGround.widthProperty());
-        //spImageView.setFitWidth(apBackGround.getWidth());
-        //spImageView.fitHeightProperty().bind(apBackGround.heightProperty());
-        //spImageView.setFitHeight(apBackGround.getHeight());
         spImageView.setPreserveRatio(false);
-
-
     }
 
     public void setMain(Main main){
         this.main = main;
     }
 
+    @FXML
+    public void lbAddCustomImageClicked(){
+        File file = main.getDirPath();
+        //file.
+
+    }
     @FXML
     public void lbGameAddClicked(){
         File file = main.getDirPath();

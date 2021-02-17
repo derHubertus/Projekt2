@@ -68,8 +68,8 @@
                   <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fx:id="ivImageSet" cache="true" cacheHint="QUALITY" fitHeight="617.0" fitWidth="1041.0" layoutY="-1.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" smooth="false" />
-                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="215.0" onMouseClicked="#launchGame" text="Label" textFill="#ff9200" AnchorPane.leftAnchor="14.0" />
-                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#paneGetImageFromWeb" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" textFill="#ff9200" AnchorPane.leftAnchor="14.0">
+                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="207.0" onMouseClicked="#launchGame" prefHeight="25.0" prefWidth="66.0" text="Name" textFill="#ff9200" AnchorPane.leftAnchor="14.0" />
+                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#launchGame" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" textFill="#ff9200" AnchorPane.leftAnchor="14.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
@@ -78,6 +78,11 @@
                               <Image url="@../images/logoinside.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="lbAddCustomImage" layoutX="14.0" layoutY="241.0" text="+" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </center>
