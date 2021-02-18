@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.CopyOption;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 public class RootLayoutController {
@@ -103,6 +104,7 @@ public class RootLayoutController {
     public void lbAddCustomImageClicked() throws IOException {
         File file = main.getDirPath();
         String location = "src/AppLauncher/customImages/"+file.getName();
+        //Files.createDirectory();
         Files.copy(file.toPath(), new File(location).toPath(), REPLACE_EXISTING);
     }
     @FXML
@@ -504,7 +506,15 @@ public class RootLayoutController {
 
 
 
+    // setPicturePaths in Game.java oder Ordner System?
+    // Ein Ordner mit allen Images (customImages) oder Viele Ordner für jeweils ein Spiel?
+    // Neues Attribut "imagePath/dirPath" in die JSON Datei packen?
+    // Ordner für Images direkt beim Hinzufügen eines Spiels erstellen? + Vor allem Wie?
+    // Ein Image hochladen oder später die Auswahl erlauben
 
+    //In files bilderordner erstellen
+
+    //Slideshow / Pfeile (MenuItem)
 
 
 

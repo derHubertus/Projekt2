@@ -46,6 +46,7 @@ public class Plattform {
             map.put("path", g.getPath());
             map.put("name", g.getName());
             map.put("logoPath", g.getLogoPath());
+            map.put("picturePath", g.getPicturePath().toString());
 
             try {
 
@@ -78,6 +79,7 @@ public class Plattform {
                     String name = new JSONObject(jsonObject.get(String.valueOf(counter)).toString()).get("name").toString();
                     String path = new JSONObject(jsonObject.get(String.valueOf(counter)).toString()).get("path").toString();
                     String logoPath = new JSONObject(jsonObject.get(String.valueOf(counter)).toString()).get("logoPath").toString();
+                    String picturePath = new JSONObject(jsonObject.get(String.valueOf(counter)).toString()).get("picturePath").toString();
                     System.out.println(name + " " + path + " " + logoPath);
 
                     Game game = new Game(name, path);
