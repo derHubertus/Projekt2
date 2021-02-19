@@ -46,7 +46,7 @@ public class Plattform {
             map.put("path", g.getPath());
             map.put("name", g.getName());
             map.put("logoPath", g.getLogoPath());
-            map.put("picturePath", g.getPicturePath().toString());
+            map.put("picturePath", g.getPicturePath());
 
             try {
 
@@ -80,7 +80,7 @@ public class Plattform {
                     String path = new JSONObject(jsonObject.get(String.valueOf(counter)).toString()).get("path").toString();
                     String logoPath = new JSONObject(jsonObject.get(String.valueOf(counter)).toString()).get("logoPath").toString();
                     String picturePath = new JSONObject(jsonObject.get(String.valueOf(counter)).toString()).get("picturePath").toString();
-                    System.out.println(name + " " + path + " " + logoPath);
+                    System.out.println(name + " " + path + " " + logoPath +  " " + picturePath); // +  " " + picturePath <-- Das gehört noch rein
 
                     Game game = new Game(name, path);
                     game.setLogoPath(logoPath);
@@ -99,8 +99,6 @@ public class Plattform {
 
 
     }
-
-
 
     public String getName() {
         return name;

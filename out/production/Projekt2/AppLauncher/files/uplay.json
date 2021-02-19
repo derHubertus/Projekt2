@@ -1,22 +1,32 @@
 {
   "0": {
+    "picturePath": "src/AppLauncher/files/Rainbow",
     "path": "c:\\R6.exe",
     "logoPath": "",
     "name": "Rainbow"
   },
   "1": {
+    "picturePath": "src/AppLauncher/files/Wildlands",
     "path": "c:\\counterstrike.exe",
     "logoPath": "",
     "name": "Wildlands"
   },
   "2": {
+    "picturePath": "src/AppLauncher/files/csgo",
     "path": "C:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\csgo.exe",
     "logoPath": "",
     "name": "csgo"
   },
   "3": {
+    "picturePath": "src/AppLauncher/files/Trackmania",
     "path": "C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Trackmania\\Trackmania.exe",
     "logoPath": "",
     "name": "Trackmania"
+  },
+  "4": {
+    "picturePath": "src/AppLauncher/files/csgo",
+    "path": "C:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\csgo.exe",
+    "logoPath": "",
+    "name": "csgo"
   }
 }

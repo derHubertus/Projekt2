@@ -5,6 +5,8 @@ import AppLauncher.Data.Game;
 import AppLauncher.Data.GameCell;
 import AppLauncher.Data.Plattform;
 import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -22,6 +24,7 @@ import javafx.stage.FileChooser;
 import org.w3c.dom.css.RGBColor;
 
 import javax.imageio.ImageIO;
+
 import static java.nio.file.StandardCopyOption.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
@@ -94,6 +97,18 @@ public class RootLayoutController {
             return new GameCell();
         });
         spImageView.setPreserveRatio(false);
+
+        lvGameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Game>() {
+            @Override
+            public void changed(ObservableValue<? extends Game> observableValue, Game oldValue, Game newValue) {
+                try{
+                    lbGameNameDisplay.setText(newValue.getName());
+                }catch(NullPointerException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public void setMain(Main main){
@@ -102,10 +117,29 @@ public class RootLayoutController {
 
     @FXML
     public void lbAddCustomImageClicked() throws IOException {
-        File file = main.getDirPath();
-        String location = "src/AppLauncher/customImages/"+file.getName();
-        //Files.createDirectory();
-        Files.copy(file.toPath(), new File(location).toPath(), REPLACE_EXISTING);
+        // Label deaktivieren
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information!");
+        alert.setHeaderText("Achtung!");
+        alert.setContentText("Bitte wählen Sie ein Spiel aus!");
+        alert.showAndWait();
+        lbAddCustomImage.setDisable(true);
+        lvGameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Game>() {
+            @Override
+            public void changed(ObservableValue<? extends Game> observableValue, Game oldValue, Game newValue) {
+                System.out.println("Selektiert: " + newValue.getName());
+                try { //Wenn wir auf das Plus drücken, dass sich dann ein Dialog-Fenset öffnet, das besagt, dass man ein Spiel auswählen soll
+                    File file = main.getDirPath();
+                    String location = "src/AppLauncher/files/"+newValue.getName()+"/"+file.getName();
+                    Files.copy(file.toPath(), new File(location).toPath(), REPLACE_EXISTING);
+                    lbAddCustomImage.setDisable(false);
+                    // Label aktivieren
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
     @FXML
     public void lbGameAddClicked(){
@@ -237,6 +271,7 @@ public class RootLayoutController {
             changeColorWhite(lbGamePlay);
             changeColorWhite(lbGameAdd);
             changeColorWhite(lbGameNameDisplay);
+            changeColorWhite(lbAddCustomImage);
         }
         else if (s.equals("red")){
             changeColorRed(lbSteam);
@@ -245,6 +280,7 @@ public class RootLayoutController {
             changeColorRed(lbGamePlay);
             changeColorRed(lbGameAdd);
             changeColorRed(lbGameNameDisplay);
+            changeColorRed(lbAddCustomImage);
         }
         else if (s.equals("black")){
             changeColorDefault(lbSteam);
@@ -253,6 +289,7 @@ public class RootLayoutController {
             changeColorDefault(lbGamePlay);
             changeColorDefault(lbGameAdd);
             changeColorDefault(lbGameNameDisplay);
+            changeColorDefault(lbAddCustomImage);
         }
     }
 
@@ -393,6 +430,33 @@ public class RootLayoutController {
         }
         else if(color.equals("black")){
             changeColorHover(lbGamePlay);
+        }
+    }
+    @FXML
+    public void lbAddCustomImageHover(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbAddCustomImage);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbAddCustomImage);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbAddCustomImage);
+        }
+    }
+
+    @FXML
+    public void lbAddCustomImageDefault(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbAddCustomImage);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbAddCustomImage);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbAddCustomImage);
         }
     }
 

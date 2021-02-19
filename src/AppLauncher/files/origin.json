@@ -1,5 +1,14 @@
-{"0": {
-  "path": "F:\\BattleNet\\Call of Duty Modern Warfare\\ModernWarfare.exe",
-  "logoPath": "",
-  "name": "ModernWarfare"
-}}
+{
+  "0": {
+    "picturePath": "src/AppLauncher/files/ModernWarfare",
+    "path": "F:\\BattleNet\\Call of Duty Modern Warfare\\ModernWarfare.exe",
+    "logoPath": "",
+    "name": "ModernWarfare"
+  },
+  "1": {
+    "picturePath": "src/AppLauncher/files/Trackmania",
+    "path": "C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Trackmania\\Trackmania.exe",
+    "logoPath": "",
+    "name": "Trackmania"
+  }
+}

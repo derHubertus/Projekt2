@@ -13,33 +13,26 @@ public class Game {
     private String path;
     private String nickName;
     private String logoPath = "";
-    private Path picturePath;
+    private String picturePath;
     private static int counter = 1;
 
     public Game(String name, String path){
         this.name = name;
         this.path = path;
         try{
-
             picturePath = createDirectory(name);
-
         }catch(IOException io){
-
             io.printStackTrace();
-
         }
     }
 
-    private Path createDirectory(String name) throws IOException {
-        Path location = Path.of("src/AppLauncher/files/" + name);
-        if (!Files.exists(location)){
-            Files.createDirectory(location);
+    private String createDirectory(String name) throws IOException {
+        String location = "src/AppLauncher/files/" + name;
+        if (!Files.exists(Path.of(location))){
+            Files.createDirectory(Path.of(location));
             return location;
         }
         else{
-            location = Path.of("src/AppLauncher/files/" + name + "("+counter+")");
-            Files.createDirectory(location);
-            counter++;
             return location;
         }
     }
@@ -62,7 +55,7 @@ public class Game {
     }
 
     //getter-methoden
-    public Path getPicturePath() {
+    public String getPicturePath() {
         return picturePath;
     }
 
