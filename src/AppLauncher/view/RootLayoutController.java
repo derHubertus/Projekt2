@@ -97,7 +97,7 @@ public class RootLayoutController {
             return new GameCell();
         });
         spImageView.setPreserveRatio(false);
-        ivImageSet.setPreserveRatio(true);
+        ivImageSet.setPreserveRatio(false);
 
         lvGameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Game>() {
             @Override
