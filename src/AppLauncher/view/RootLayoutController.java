@@ -97,17 +97,33 @@ public class RootLayoutController {
             return new GameCell();
         });
         spImageView.setPreserveRatio(false);
+        ivImageSet.setPreserveRatio(true);
 
         lvGameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Game>() {
             @Override
             public void changed(ObservableValue<? extends Game> observableValue, Game oldValue, Game newValue) {
                 try{
                     lbGameNameDisplay.setText(newValue.getName());
+
+                    File pictureDirectory = new File(newValue.getPicturePath());
+                    File[] listOfPictures = pictureDirectory.listFiles();
+
+                    assert listOfPictures != null;
+                    if (listOfPictures.length > 0) {
+                        Image img = new Image(listOfPictures[0].getPath().substring(3)); //Alle Bilder als "1" speicher
+                        ivImageSet.setImage(img);
+                    }
+                    else{
+                        ivImageSet.setImage(null);
+                    }
+
                 }catch(NullPointerException e){
                     e.printStackTrace();
                 }
             }
         });
+
+
 
     }
 
@@ -132,6 +148,7 @@ public class RootLayoutController {
                     File file = main.getDirPath();
                     String location = "src/AppLauncher/files/"+newValue.getName()+"/"+file.getName();
                     Files.copy(file.toPath(), new File(location).toPath(), REPLACE_EXISTING);
+
                     lbAddCustomImage.setDisable(false);
                     // Label aktivieren
                 } catch (IOException e) {
