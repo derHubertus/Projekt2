@@ -1,26 +1,26 @@
 {
   "0": {
-    "picturePath": "src/AppLauncher/files/BlackOpsColdWar",
-    "path": "D:\\Games\\Battle.net - Games\\Call of Duty Black Ops Cold War\\BlackOpsColdWar.exe",
-    "logoPath": "",
-    "name": "BlackOpsColdWar"
-  },
-  "1": {
     "picturePath": "src/AppLauncher/files/GTAIV",
     "path": "D:\\Games\\Steam\\steamapps\\common\\Grand Theft Auto IV\\GTAIV\\GTAIV.exe",
     "logoPath": "",
     "name": "GTAIV"
   },
-  "2": {
+  "1": {
     "picturePath": "src/AppLauncher/files/TmForever",
     "path": "D:\\Games\\Steam\\steamapps\\common\\TrackMania Nations Forever\\TmForever.exe",
     "logoPath": "",
     "name": "TmForever"
   },
-  "3": {
+  "2": {
     "picturePath": "src/AppLauncher/files/GTA5",
     "path": "D:\\Games\\Steam\\steamapps\\common\\Grand Theft Auto V\\GTA5.exe",
     "logoPath": "",
     "name": "GTA5"
+  },
+  "3": {
+    "picturePath": "src/AppLauncher/files/vegas170",
+    "path": "C:\\Sony Vegas Pro 17\\vegas170.exe",
+    "logoPath": "",
+    "name": "vegas170"
   }
 }

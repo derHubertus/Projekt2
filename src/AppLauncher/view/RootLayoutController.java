@@ -48,8 +48,6 @@ public class RootLayoutController {
     @FXML
     private Label lbGamePlay;
     @FXML
-    private Label lbAddCustomImage;
-    @FXML
     private Label lbGameNameDisplay;
     @FXML
     private ListView<Game> lvGameList = new ListView<>();
@@ -123,41 +121,11 @@ public class RootLayoutController {
             }
         });
 
-
-
     }
-
     public void setMain(Main main){
         this.main = main;
     }
 
-    @FXML
-    public void lbAddCustomImageClicked() throws IOException {
-        // Label deaktivieren
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information!");
-        alert.setHeaderText("Achtung!");
-        alert.setContentText("Bitte wählen Sie ein Spiel aus!");
-        alert.showAndWait();
-        lbAddCustomImage.setDisable(true);
-        lvGameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Game>() {
-            @Override
-            public void changed(ObservableValue<? extends Game> observableValue, Game oldValue, Game newValue) {
-                System.out.println("Selektiert: " + newValue.getName());
-                try { //Wenn wir auf das Plus drücken, dass sich dann ein Dialog-Fenset öffnet, das besagt, dass man ein Spiel auswählen soll
-                    File file = main.getDirPath();
-                    String location = "src/AppLauncher/files/"+newValue.getName()+"/"+file.getName();
-                    Files.copy(file.toPath(), new File(location).toPath(), REPLACE_EXISTING);
-
-                    lbAddCustomImage.setDisable(false);
-                    // Label aktivieren
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-    }
     @FXML
     public void lbGameAddClicked(){
         File file = main.getDirPath();
@@ -288,7 +256,6 @@ public class RootLayoutController {
             changeColorWhite(lbGamePlay);
             changeColorWhite(lbGameAdd);
             changeColorWhite(lbGameNameDisplay);
-            changeColorWhite(lbAddCustomImage);
         }
         else if (s.equals("red")){
             changeColorRed(lbSteam);
@@ -297,7 +264,6 @@ public class RootLayoutController {
             changeColorRed(lbGamePlay);
             changeColorRed(lbGameAdd);
             changeColorRed(lbGameNameDisplay);
-            changeColorRed(lbAddCustomImage);
         }
         else if (s.equals("black")){
             changeColorDefault(lbSteam);
@@ -306,10 +272,8 @@ public class RootLayoutController {
             changeColorDefault(lbGamePlay);
             changeColorDefault(lbGameAdd);
             changeColorDefault(lbGameNameDisplay);
-            changeColorDefault(lbAddCustomImage);
         }
     }
-
     @FXML
     public void lbSteamHover(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
@@ -449,33 +413,6 @@ public class RootLayoutController {
             changeColorHover(lbGamePlay);
         }
     }
-    @FXML
-    public void lbAddCustomImageHover(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbAddCustomImage);
-        }
-        else if(color.equals("white")){
-            changeColorWhiteHover(lbAddCustomImage);
-        }
-        else if(color.equals("black")){
-            changeColorHover(lbAddCustomImage);
-        }
-    }
-
-    @FXML
-    public void lbAddCustomImageDefault(){
-        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbAddCustomImage);
-        }
-        else if(color.equals("white")){
-            changeColorWhite(lbAddCustomImage);
-        }
-        else if(color.equals("black")){
-            changeColorDefault(lbAddCustomImage);
-        }
-    }
 
     @FXML
     public String urlStart(String s){
@@ -539,7 +476,7 @@ public class RootLayoutController {
         if(event.getButton() == MouseButton.SECONDARY){
             System.out.println("\n\n");
             System.out.println(plattformSteam.getGames());
-            EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, x, y);
+            EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, main, x, y);
             System.out.println(plattformSteam.getGames());
             plattformSteam.save();
         }

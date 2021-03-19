@@ -78,11 +78,6 @@
                               <Image url="@../images/logoinside.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lbAddCustomImage" layoutX="14.0" layoutY="241.0" onMouseClicked="#lbAddCustomImageClicked" onMouseEntered="#lbAddCustomImageHover" onMouseExited="#lbAddCustomImageDefault" text="+" textFill="#ff9200">
-                           <font>
-                              <Font name="System Bold" size="23.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                </center>
