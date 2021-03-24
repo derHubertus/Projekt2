@@ -77,8 +77,7 @@ public class RootLayoutController {
     private StackPane sp;
 
     private Main main;
-
-
+    
     private Plattform plattformSteam = new Plattform("Steam");
     private Plattform plattformOrigin = new Plattform("Origin");
     private Plattform plattformUplay = new Plattform("Uplay");
@@ -90,7 +89,6 @@ public class RootLayoutController {
     public void initialize(){
 
         lbSteamClicked();
-
         lvGameList.setCellFactory(value -> {
             return new GameCell();
         });

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
@@ -16,7 +17,7 @@
 
 <AnchorPane fx:id="apBackGround" maxHeight="750.0" maxWidth="1280.0" minHeight="750.0" minWidth="1280.0" prefHeight="750.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppLauncher.view.RootLayoutController">
    <children>
-      <StackPane fx:id="sp" maxHeight="725.0" maxWidth="1280.0" minHeight="725.0" minWidth="1280.0" prefHeight="725.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane fx:id="sp" maxHeight="750.0" maxWidth="1280.0" minHeight="750.0" minWidth="1280.0" prefHeight="750.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="spImageView" fitHeight="750.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,15 +31,18 @@
                         <Label fx:id="lbSteam" onMouseClicked="#lbSteamClicked" onMouseEntered="#lbSteamHover" onMouseExited="#lbSteamDefault" text="STEAM" textFill="#ff9200">
                            <font>
                               <Font name="System Bold" size="12.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
                         <Label fx:id="lbOrigin" onMouseClicked="#lbOriginClicked" onMouseEntered="#lbOriginHover" onMouseExited="#lbOriginDefault" text="ORIGIN" textFill="#ff9200">
                            <font>
                               <Font name="System Bold" size="12.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
                         <Label fx:id="lbUplay" onMouseClicked="#lbUplayClicked" onMouseEntered="#lbUplayHover" onMouseExited="#lbUplayDefault" text="UPLAY" textFill="#ff9200">
                            <font>
                               <Font name="System Bold" size="12.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -68,7 +72,7 @@
                   <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fx:id="ivImageSet" cache="true" cacheHint="QUALITY" fitHeight="649.0" fitWidth="1046.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" smooth="false" />
-                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="207.0" onMouseClicked="#launchGame" prefHeight="25.0" prefWidth="166.0" text="Name" textFill="#ff9200" AnchorPane.leftAnchor="14.0" />
+                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="207.0" onMouseClicked="#launchGame" prefHeight="25.0" prefWidth="114.0" text="Name" textFill="#ff9200" AnchorPane.leftAnchor="14.0" />
                         <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#launchGame" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" textFill="#ff9200" AnchorPane.leftAnchor="14.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -78,18 +82,16 @@
                               <Image url="@../images/logoinside.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lbAddCustomImage" layoutX="14.0" layoutY="241.0" onMouseClicked="#lbAddCustomImageClicked" onMouseEntered="#lbAddCustomImageHover" onMouseExited="#lbAddCustomImageDefault" text="+" textFill="#ff9200">
-                           <font>
-                              <Font name="System Bold" size="23.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                </center>
             </BorderPane>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </StackPane>
-      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="1280.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -109,6 +111,12 @@
             </items>
           </Menu>
         </menus>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </MenuBar>
    </children>
 </AnchorPane>

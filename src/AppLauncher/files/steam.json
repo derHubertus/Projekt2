@@ -1,26 +1,56 @@
 {
   "0": {
-    "picturePath": "src/AppLauncher/files/GTAIV",
-    "path": "D:\\Games\\Steam\\steamapps\\common\\Grand Theft Auto IV\\GTAIV\\GTAIV.exe",
+    "picturePath": "src/AppLauncher/files/Sony Vegas 17",
+    "path": "C:\\Sony Vegas Pro 17\\Sony Vegas 17.exe",
     "logoPath": "",
-    "name": "GTAIV"
+    "name": "Sony Vegas 17"
   },
   "1": {
-    "picturePath": "src/AppLauncher/files/TmForever",
-    "path": "D:\\Games\\Steam\\steamapps\\common\\TrackMania Nations Forever\\TmForever.exe",
+    "picturePath": "src/AppLauncher/files/Counter Strike - Global Offensive",
+    "path": "C:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\Counter Strike - Global Offensive.exe",
     "logoPath": "",
-    "name": "TmForever"
+    "name": "Counter Strike - Global Offensive"
   },
   "2": {
-    "picturePath": "src/AppLauncher/files/GTA5",
-    "path": "D:\\Games\\Steam\\steamapps\\common\\Grand Theft Auto V\\GTA5.exe",
+    "picturePath": "src/AppLauncher/files/Call of Duty - Cold War",
+    "path": "D:\\Games\\Battle.net - Games\\Call of Duty Black Ops Cold War\\Call of Duty - Cold War.exe",
     "logoPath": "",
-    "name": "GTA5"
+    "name": "Call of Duty - Cold War"
   },
   "3": {
-    "picturePath": "src/AppLauncher/files/vegas170",
-    "path": "C:\\Sony Vegas Pro 17\\vegas170.exe",
+    "picturePath": "src/AppLauncher/files/Grand Theft Auto 2",
+    "path": "D:\\Games\\GTA 2\\Grand Theft Auto 2.exe",
     "logoPath": "",
-    "name": "vegas170"
+    "name": "Grand Theft Auto 2"
+  },
+  "4": {
+    "picturePath": "src/AppLauncher/files/Cyberpunk2077",
+    "path": "D:\\Games\\Epic Games Games\\Cyberpunk2077\\bin\\x64\\Cyberpunk2077.exe",
+    "logoPath": "",
+    "name": "Cyberpunk2077"
+  },
+  "5": {
+    "picturePath": "src/AppLauncher/files/Grand Theft Auto IV",
+    "path": "D:\\Games\\Steam\\steamapps\\common\\Grand Theft Auto IV\\GTAIV\\Grand Theft Auto IV.exe",
+    "logoPath": "",
+    "name": "Grand Theft Auto IV"
+  },
+  "6": {
+    "picturePath": "src/AppLauncher/files/Grand Theft Auto V",
+    "path": "D:\\Games\\Steam\\steamapps\\common\\Grand Theft Auto V\\Grand Theft Auto V.exe",
+    "logoPath": "",
+    "name": "Grand Theft Auto V"
+  },
+  "7": {
+    "picturePath": "src/AppLauncher/files/SkaterXL",
+    "path": "D:\\Games\\Steam\\steamapps\\common\\Skater XL\\SkaterXL.exe",
+    "logoPath": "",
+    "name": "SkaterXL"
+  },
+  "8": {
+    "picturePath": "src/AppLauncher/files/Trackmania Nations Forever",
+    "path": "D:\\Games\\Steam\\steamapps\\common\\TrackMania Nations Forever\\Trackmania Nations Forever.exe",
+    "logoPath": "",
+    "name": "Trackmania Nations Forever"
   }
 }

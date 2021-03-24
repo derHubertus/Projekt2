@@ -31,6 +31,7 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Hoomak Launcher™");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/logo.png")));
+
         initRootLayout();
 
         testData();
