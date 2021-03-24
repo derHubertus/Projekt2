@@ -1,6 +1,9 @@
 package AppLauncher.Data;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +13,29 @@ public class Game {
     private String path;
     private String nickName;
     private String logoPath = "";
-    private List<String> picturePaths = new ArrayList<>();
+    private String picturePath;
+    private static int counter = 1;
 
-
-    public Game(String name, String path) {
+    public Game(String name, String path){
         this.name = name;
         this.path = path;
+        try{
+            picturePath = createDirectory(name);
+        }catch(IOException io){
+            io.printStackTrace();
+        }
     }
 
+    private String createDirectory(String name) throws IOException {
+        String location = "src/AppLauncher/files/" + name;
+        if (!Files.exists(Path.of(location))){
+            Files.createDirectory(Path.of(location));
+            return location;
+        }
+        else{
+            return location;
+        }
+    }
 
     //setter-methoden
     public void setPath(String newPath) {
@@ -36,12 +54,11 @@ public class Game {
         this.name = name;
     }
 
-    public void setPicturePaths(List<String> picturePaths) {
-        this.picturePaths = picturePaths;
+    //getter-methoden
+    public String getPicturePath() {
+        return picturePath;
     }
 
-
-    //getter-methoden
     public String getName() {
         return this.name;
     }
@@ -57,10 +74,6 @@ public class Game {
 
     public String getLogoPath() {
         return this.logoPath;
-    }
-
-    public List<String> getPicturePaths() {
-        return picturePaths;
     }
 
     public void launchGame(){

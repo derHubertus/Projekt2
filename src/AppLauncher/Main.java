@@ -21,8 +21,6 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-
-
     private Stage primaryStage;
     private AnchorPane rootLayout;
     private ObservableList<String> gameList = FXCollections.observableArrayList();
@@ -30,21 +28,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("RootLayout.fxml"));
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Hoomak Launcher™");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/logo.png")));
-        //primaryStage.setScene(new Scene(root, 600, 480));
-        //primaryStage.show();
+
         initRootLayout();
 
-
         testData();
-
     }
 
     private void testData() {
-/*
+        /*
         Plattform steam = new Plattform("steam");
 
         steam.load();
@@ -79,13 +73,6 @@ public class Main extends Application {
             primaryStage.show();
             RootLayoutController controller = loader.getController();
             controller.setMain(this);
-            //Steam-Objekt
-            //Steam-JSON-Loader
-            //Origin-Objekt
-            //Origin-JSON-Loader
-            //Uplay-Objekt
-            //Uplay-JSON-Loader
-            //Nach Knopfdruck ListView befüllen
         }catch(IOException io){
             io.printStackTrace();
         }
@@ -103,8 +90,5 @@ public class Main extends Application {
         return primaryStage;
     }
 }
-
-
-
 //json file zum speichern der Files -> Liste an Spielobjekten
 //spielobjekt: namen, pfad.exe, plattform, bild(?)

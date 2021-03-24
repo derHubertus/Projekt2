@@ -5,6 +5,8 @@ import AppLauncher.Data.Game;
 import AppLauncher.Data.GameCell;
 import AppLauncher.Data.Plattform;
 import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -19,8 +21,18 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import AppLauncher.Main;
 import javafx.stage.FileChooser;
+import org.w3c.dom.css.RGBColor;
 
+import javax.imageio.ImageIO;
+
+import static java.nio.file.StandardCopyOption.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 public class RootLayoutController {
@@ -44,6 +56,8 @@ public class RootLayoutController {
     @FXML
     private ImageView ivImageSet;
     @FXML
+    private ImageView spImageView;
+    @FXML
     private MenuBar menuBar;
     @FXML
     private HBox hboxTop;
@@ -59,11 +73,11 @@ public class RootLayoutController {
     private MenuItem mbItemDark;
     @FXML
     private MenuItem mbItemAbout;
+    @FXML
+    private StackPane sp;
 
     private Main main;
-
-
-
+    
     private Plattform plattformSteam = new Plattform("Steam");
     private Plattform plattformOrigin = new Plattform("Origin");
     private Plattform plattformUplay = new Plattform("Uplay");
@@ -72,22 +86,44 @@ public class RootLayoutController {
     private ObservableList<Game> clearList = FXCollections.observableArrayList();
 
 
-
     public void initialize(){
 
         lbSteamClicked();
-
         lvGameList.setCellFactory(value -> {
             return new GameCell();
         });
+        spImageView.setPreserveRatio(false);
+        ivImageSet.setPreserveRatio(false);
 
+        lvGameList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Game>() {
+            @Override
+            public void changed(ObservableValue<? extends Game> observableValue, Game oldValue, Game newValue) {
+                try{
+                    lbGameNameDisplay.setText(newValue.getName());
 
+                    File pictureDirectory = new File(newValue.getPicturePath());
+                    File[] listOfPictures = pictureDirectory.listFiles();
 
+                    assert listOfPictures != null;
+                    if (listOfPictures.length > 0) {
+                        Image img = new Image(listOfPictures[0].getPath().substring(3)); //Alle Bilder als "1" speicher
+                        ivImageSet.setImage(img);
+                    }
+                    else{
+                        ivImageSet.setImage(null);
+                    }
+
+                }catch(NullPointerException e){
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
     public void setMain(Main main){
         this.main = main;
     }
+
     @FXML
     public void lbGameAddClicked(){
         File file = main.getDirPath();
@@ -124,11 +160,8 @@ public class RootLayoutController {
                     return;
             }
         }
-
-
-
-
     }
+
     @FXML
     public void lbSteamClicked(){
         lvGameList.getItems().removeAll();
@@ -139,6 +172,22 @@ public class RootLayoutController {
         });*/
 
     }
+
+    @FXML
+    private void handleAbout(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Hoomak Launcher™ - About");
+        alert.setHeaderText("Laucher for all your games!");
+        alert.setContentText("Made by DC&BI Team");
+
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleExit(){
+        System.exit(0);
+    }
+
     @FXML
     public void lbOriginClicked(){
         lvGameList.getItems().removeAll();
@@ -149,6 +198,7 @@ public class RootLayoutController {
         });*/
 
     }
+
     @FXML
     public void lbUplayClicked(){
         lvGameList.getItems().removeAll();
@@ -159,57 +209,215 @@ public class RootLayoutController {
         });*/
 
     }
-    public void changeColorHover(Label label){
-        label.setTextFill(Color.GRAY);
+
+    public String getImageColor(String s){
+        if (s.contains("red")){
+            return "red";
+        }
+        else if (s.contains("white")){
+            return "white";
+        }
+        else{
+            return "black";
+        }
     }
+
+    public void changeColorHover(Label label){
+        label.setTextFill(Color.ORANGERED);
+    }
+
     public void changeColorDefault(Label label){
-        label.setTextFill(Color.BLACK);
+        label.setTextFill(Color.rgb(255,146,0));
+    }
+
+    public void changeColorWhite(Label label) {
+        label.setTextFill(Color.DODGERBLUE);
+    }
+
+    public void changeColorWhiteHover(Label label) {
+        label.setTextFill(Color.MIDNIGHTBLUE);
+    }
+
+    public void changeColorRed(Label label){
+        label.setTextFill(Color.WHITE);
+    }
+
+    public void changeColorRedHover(Label label){
+        label.setTextFill(Color.DARKORANGE);
+    }
+
+    public void changeAllLabelColor(String s){
+        if (s.equals("white")){
+            changeColorWhite(lbSteam);
+            changeColorWhite(lbOrigin);
+            changeColorWhite(lbUplay);
+            changeColorWhite(lbGamePlay);
+            changeColorWhite(lbGameAdd);
+            changeColorWhite(lbGameNameDisplay);
+        }
+        else if (s.equals("red")){
+            changeColorRed(lbSteam);
+            changeColorRed(lbOrigin);
+            changeColorRed(lbUplay);
+            changeColorRed(lbGamePlay);
+            changeColorRed(lbGameAdd);
+            changeColorRed(lbGameNameDisplay);
+        }
+        else if (s.equals("black")){
+            changeColorDefault(lbSteam);
+            changeColorDefault(lbOrigin);
+            changeColorDefault(lbUplay);
+            changeColorDefault(lbGamePlay);
+            changeColorDefault(lbGameAdd);
+            changeColorDefault(lbGameNameDisplay);
+        }
     }
     @FXML
     public void lbSteamHover(){
-        changeColorHover(lbSteam);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbSteam);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbSteam);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbSteam);
+        }
     }
+
     @FXML
     public void lbSteamDefault(){
-        changeColorDefault(lbSteam);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbSteam);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbSteam);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbSteam);
+        }
     }
+
     @FXML
     public void lbOriginHover(){
-        changeColorHover(lbOrigin);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbOrigin);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbOrigin);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbOrigin);
+        }
     }
+
     @FXML
     public void lbOriginDefault(){
-        changeColorDefault(lbOrigin);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbOrigin);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbOrigin);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbOrigin);
+        }
     }
+
     @FXML
     public void lbUplayHover(){
-        changeColorHover(lbUplay);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbUplay);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbUplay);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbUplay);
+        }
     }
+
     @FXML
     public void lbUplayDefault(){
-        changeColorDefault(lbUplay);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbUplay);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbUplay);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbUplay);
+        }
     }
+
     @FXML
     public void lbGameAddHover(){
-        changeColorHover(lbGameAdd);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbGameAdd);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbGameAdd);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbGameAdd);
+        };
     }
+
     @FXML
     public void lbGameAddDefault(){
-        changeColorDefault(lbGameAdd);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbGameAdd);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbGameAdd);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbGameAdd);
+        }
     }
+
     @FXML
     public void lbGamePlayDefault(){
-        changeColorDefault(lbGamePlay);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRed(lbGamePlay);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbGamePlay);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbGamePlay);
+        }
     }
+
     @FXML
     public void lbGamePlayHover(){
-        changeColorHover(lbGamePlay);
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("red")){
+            changeColorRedHover(lbGamePlay);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbGamePlay);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbGamePlay);
+        }
     }
+
     @FXML
     public String urlStart(String s){
         String url = "https://cdn.cloudflare.steamstatic.com/steam/apps/"+s;
         return url;
     }
+
     @FXML
     public void paneGetImageFromWeb(){
         String plusurl = "730/ss_2fcee01bace72bc47a2ad0ba82620588239e93df.jpg";
@@ -220,36 +428,29 @@ public class RootLayoutController {
         ivImageSet.setPreserveRatio(true);
         ivImageSet.setImage(img);
     }
+
     @FXML
-    public void switchSkinDark(){
-        //apGameInfo.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxBottom.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxTop.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        lvGameList.setStyle("-fx-background-color: white;");
-
-        //apBackGround.setBackground(new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        menuBar.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        //ivImageSet.setImage(new Image("AppLauncher/images/imageimage.jpg"));
-        mbItemAbout.setStyle("-fx-background-color : #D3D3D3;");
-        mbItemClose.setStyle("-fx-background-color : #D3D3D3;");
-        mbItemDark.setStyle("-fx-background-color : #D3D3D3;");
-        mbItemLight.setStyle("-fx-background-color : #D3D3D3;");
-
+    public void switchSkinBlack(){
+        //Wir wissen nicht wieso, aber es funktioniert besser als mit apBackGround, weil es weniger verpixelt ist.
+        Image img = new Image("AppLauncher/images/apBack.jpeg");
+        spImageView.setImage(img);
+        changeAllLabelColor("black");
     }
+
     @FXML
-    public void switchSkinLight(){
-        //apGameInfo.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxBottom.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        //hboxTop.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        lvGameList.setStyle("-fx-background-color: blue;");
-        apBackGround.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        menuBar.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
-        mbItemAbout.setStyle("-fx-background-color : #FFFFFF;");
-        mbItemClose.setStyle("-fx-background-color : #FFFFFF;");
-        mbItemDark.setStyle("-fx-background-color : #FFFFFF;");
-        mbItemLight.setStyle("-fx-background-color : #FFFFFF;");
+    public void switchSkinWhite(){
+        Image img = new Image("AppLauncher/images/whiteBack.jpg");
+        spImageView.setImage(img);
+        changeAllLabelColor("white");
     }
+
+    @FXML
+    public void switchSkinRed(){
+        Image img = new Image("AppLauncher/images/redBack.jpg");
+        spImageView.setImage(img);
+        changeAllLabelColor("red");
+    }
+
     @FXML
     public void launchGame(){
 
@@ -259,9 +460,8 @@ public class RootLayoutController {
         }catch (Exception e){
             System.out.println("Nix ausgewählt");
         }
-
-
     }
+
     @FXML
     public void listViewClick(MouseEvent event){
 
@@ -274,13 +474,14 @@ public class RootLayoutController {
         if(event.getButton() == MouseButton.SECONDARY){
             System.out.println("\n\n");
             System.out.println(plattformSteam.getGames());
-            EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, x, y);
+            EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, main, x, y);
             System.out.println(plattformSteam.getGames());
             plattformSteam.save();
         }
 
 
     }
+
     public String getNameFromPath(String path){
 
         String[] list = path.split("\\\\");
@@ -293,6 +494,7 @@ public class RootLayoutController {
 
 
     }
+
     public Plattform getPlattformSteam() {
         return plattformSteam;
     }
@@ -320,7 +522,15 @@ public class RootLayoutController {
 
 
 
+    // setPicturePaths in Game.java oder Ordner System?
+    // Ein Ordner mit allen Images (customImages) oder Viele Ordner für jeweils ein Spiel?
+    // Neues Attribut "imagePath/dirPath" in die JSON Datei packen?
+    // Ordner für Images direkt beim Hinzufügen eines Spiels erstellen? + Vor allem Wie?
+    // Ein Image hochladen oder später die Auswahl erlauben
 
+    //In files bilderordner erstellen
+
+    //Slideshow / Pfeile (MenuItem)
 
 
 
