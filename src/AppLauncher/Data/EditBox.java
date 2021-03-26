@@ -4,6 +4,7 @@ import AppLauncher.Main;
 import AppLauncher.view.RootLayoutController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,16 +32,22 @@ public class EditBox {
         window.setY(y+30);
 
         Button edit = new Button("Namen ändern");
-        Button addimg = new Button("Bild hinzufügen");
+        Button adding = new Button("Bild hinzufügen");
         Button delete = new Button("Entfernen");
         Button close = new Button("Schließen");
         edit.setMinWidth(250);
-        addimg.setMinWidth(250);
+        adding.setMinWidth(250);
         delete.setMinWidth(250);
         close.setMinWidth(250);
 
+        TextInputDialog inputDiag = new TextInputDialog(game.getName());
+
+        //Close
+
         close.setOnAction(event -> window.close());
-        addimg.setOnAction(event -> {
+
+        //AddingPic
+        adding.setOnAction(event -> {
             File file = main.getDirPath();
             String location = "src/AppLauncher/files/"+game.getName()+"/"+file.getName();
             try {
@@ -51,15 +58,30 @@ public class EditBox {
                 window.close();
             }
         });
+
+        //Delete Game
         delete.setOnAction(event -> {
             plattform.deleteGame(game);
             window.close();
         });
 
+        //Rename
+
+        edit.setOnAction(event -> {
+            inputDiag.showAndWait();
+            //inputDiag.initModality(Modality.APPLICATION_MODAL);
+            System.out.println(inputDiag.getEditor().getText());
+            plattform.editGame(game, inputDiag.getEditor().getText());
+            //game.setName(inputDiag.getEditor().getText());
+            //plattform.save();
+            window.close();
+
+        });
+
 
 
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(edit, addimg, delete, close);
+        vBox.getChildren().addAll(edit, adding, delete, close);
 
         Scene scene = new Scene(vBox);
         window.setScene(scene);

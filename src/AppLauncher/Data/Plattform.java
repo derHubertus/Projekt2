@@ -121,5 +121,15 @@ public class Plattform {
 
     }
 
+    public void editGame(Game game, String newName){
+        for(Game g : games2){
+            if(game == g){
+                g.setName(newName);
+                break;
+            }
+        }
+
+    }
+
 
 }

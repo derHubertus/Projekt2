@@ -89,9 +89,12 @@ public class RootLayoutController {
     public void initialize(){
 
         lbSteamClicked();
+
         lvGameList.setCellFactory(value -> {
             return new GameCell();
         });
+
+
         spImageView.setPreserveRatio(false);
         ivImageSet.setPreserveRatio(false);
 
@@ -120,6 +123,8 @@ public class RootLayoutController {
         });
 
     }
+
+
     public void setMain(Main main){
         this.main = main;
     }
@@ -467,18 +472,31 @@ public class RootLayoutController {
 
         double x = event.getScreenX();
         double y = event.getScreenY();
+
         if(lvGameList.getSelectionModel().isEmpty()){
             return;
         }
 
         if(event.getButton() == MouseButton.SECONDARY){
-            System.out.println("\n\n");
-            System.out.println(plattformSteam.getGames());
-            EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, main, x, y);
-            System.out.println(plattformSteam.getGames());
-            plattformSteam.save();
-        }
 
+            if(chosenPlattform.equals("uplay")){
+                EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformUplay, main, x, y);
+                lvGameList.setCellFactory(value -> new GameCell());
+                plattformUplay.save();
+            }
+
+            if(chosenPlattform.equals("steam")){
+                EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, main, x, y);
+                lvGameList.setCellFactory(value -> new GameCell());
+                plattformSteam.save();
+            }
+            if(chosenPlattform.equals("origin")) {
+                EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformOrigin, main, x, y);
+                lvGameList.setCellFactory(value -> new GameCell());
+                plattformOrigin.save();
+            }
+
+        }
 
     }
 
