@@ -3,6 +3,7 @@ package AppLauncher.Data;
 import AppLauncher.Main;
 import AppLauncher.view.RootLayoutController;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
@@ -69,11 +70,18 @@ public class EditBox {
 
         edit.setOnAction(event -> {
             inputDiag.showAndWait();
-            //inputDiag.initModality(Modality.APPLICATION_MODAL);
             System.out.println(inputDiag.getEditor().getText());
-            plattform.editGame(game, inputDiag.getEditor().getText());
-            //game.setName(inputDiag.getEditor().getText());
-            //plattform.save();
+
+            try {
+                plattform.editGame(game, inputDiag.getEditor().getText());
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Achtung!");
+                alert.setContentText("Name schon vergeben!");
+                alert.showAndWait();
+            }
+
+
             window.close();
 
         });

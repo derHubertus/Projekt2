@@ -22,6 +22,7 @@ public class Plattform {
     private List<Game> games = new ArrayList<>();
     private static int z = 0;
     private String name;
+    private Exception NewNameError;
 
 
     public Plattform(String launcher) {
@@ -121,9 +122,14 @@ public class Plattform {
 
     }
 
-    public void editGame(Game game, String newName){
+    public void editGame(Game game, String newName) throws Exception {
         for(Game g : games2){
             if(game == g){
+                for(Game g2 : games2){
+                    if(g2.getName().equals(newName)){
+                        throw NewNameError;
+                    }
+                }
                 g.setName(newName);
                 break;
             }

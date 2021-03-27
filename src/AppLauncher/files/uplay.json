@@ -1,6 +1,6 @@
 {
   "0": {
-    "picturePath": "src/AppLauncher/files/RainbowSix",
+    "picturePath": "src/AppLauncher/files/RainbowSixSiege",
     "path": "c:\\R6.exe",
     "logoPath": "",
     "name": "RainbowSixSiege"
@@ -22,11 +22,5 @@
     "path": "C:\\Program Files (x86)\\Ubisoft\\Ubisoft Game Launcher\\games\\Trackmania\\Trackmania.exe",
     "logoPath": "",
     "name": "Trackmania"
-  },
-  "4": {
-    "picturePath": "src/AppLauncher/files/csgo",
-    "path": "C:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\csgo.exe",
-    "logoPath": "",
-    "name": "csgo"
   }
 }

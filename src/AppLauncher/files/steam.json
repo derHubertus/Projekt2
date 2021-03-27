@@ -42,7 +42,7 @@
     "name": "Grand Theft Auto V"
   },
   "7": {
-    "picturePath": "src/AppLauncher/files/SkaterXL3",
+    "picturePath": "src/AppLauncher/files/Skater3XL",
     "path": "D:\\Games\\Steam\\steamapps\\common\\Skater XL\\SkaterXL.exe",
     "logoPath": "",
     "name": "Skater3XL"
@@ -52,11 +52,5 @@
     "path": "D:\\Games\\Steam\\steamapps\\common\\TrackMania Nations Forever\\Trackmania Nations Forever.exe",
     "logoPath": "",
     "name": "Trackmania Nations Forever"
-  },
-  "9": {
-    "picturePath": "src/AppLauncher/files/Sony Vegas 17",
-    "path": "C:\\Sony Vegas Pro 17\\Sony Vegas 17.exe",
-    "logoPath": "",
-    "name": "Sony Vegas 17"
   }
 }
