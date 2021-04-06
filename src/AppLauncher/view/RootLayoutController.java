@@ -4,14 +4,11 @@ import AppLauncher.Data.EditBox;
 import AppLauncher.Data.Game;
 import AppLauncher.Data.GameCell;
 import AppLauncher.Data.Plattform;
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,18 +18,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import AppLauncher.Main;
 import javafx.stage.FileChooser;
-import org.w3c.dom.css.RGBColor;
 
-import javax.imageio.ImageIO;
-
-import static java.nio.file.StandardCopyOption.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.CopyOption;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
 public class RootLayoutController {
@@ -87,7 +74,7 @@ public class RootLayoutController {
 
 
     public void initialize(){
-
+        switchSkinWhite();
         lbSteamClicked();
         lvGameList.setCellFactory(value -> {
             return new GameCell();
@@ -211,8 +198,8 @@ public class RootLayoutController {
     }
 
     public String getImageColor(String s){
-        if (s.contains("red")){
-            return "red";
+        if (s.contains("grey")){
+            return "grey";
         }
         else if (s.contains("white")){
             return "white";
@@ -223,26 +210,26 @@ public class RootLayoutController {
     }
 
     public void changeColorHover(Label label){
-        label.setTextFill(Color.ORANGERED);
+        label.setTextFill(Color.rgb(238,150,13));
     }
 
     public void changeColorDefault(Label label){
-        label.setTextFill(Color.rgb(255,146,0));
+        label.setTextFill(Color.rgb(251,184,9));
     }
 
     public void changeColorWhite(Label label) {
-        label.setTextFill(Color.DODGERBLUE);
+        label.setTextFill(Color.GOLD);
     }
 
     public void changeColorWhiteHover(Label label) {
-        label.setTextFill(Color.MIDNIGHTBLUE);
+        label.setTextFill(Color.DARKGOLDENROD);
     }
 
-    public void changeColorRed(Label label){
+    public void changeColorGrey(Label label){
         label.setTextFill(Color.WHITE);
     }
 
-    public void changeColorRedHover(Label label){
+    public void changeColorGreyHover(Label label){
         label.setTextFill(Color.DARKORANGE);
     }
 
@@ -255,13 +242,13 @@ public class RootLayoutController {
             changeColorWhite(lbGameAdd);
             changeColorWhite(lbGameNameDisplay);
         }
-        else if (s.equals("red")){
-            changeColorRed(lbSteam);
-            changeColorRed(lbOrigin);
-            changeColorRed(lbUplay);
-            changeColorRed(lbGamePlay);
-            changeColorRed(lbGameAdd);
-            changeColorRed(lbGameNameDisplay);
+        else if (s.equals("grey")){
+            changeColorGrey(lbSteam);
+            changeColorGrey(lbOrigin);
+            changeColorGrey(lbUplay);
+            changeColorGrey(lbGamePlay);
+            changeColorGrey(lbGameAdd);
+            changeColorGrey(lbGameNameDisplay);
         }
         else if (s.equals("black")){
             changeColorDefault(lbSteam);
@@ -275,8 +262,8 @@ public class RootLayoutController {
     @FXML
     public void lbSteamHover(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbSteam);
+        if (color.equals("grey")){
+            changeColorGreyHover(lbSteam);
         }
         else if(color.equals("white")){
             changeColorWhiteHover(lbSteam);
@@ -289,8 +276,8 @@ public class RootLayoutController {
     @FXML
     public void lbSteamDefault(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbSteam);
+        if (color.equals("grey")){
+            changeColorGrey(lbSteam);
         }
         else if(color.equals("white")){
             changeColorWhite(lbSteam);
@@ -303,8 +290,8 @@ public class RootLayoutController {
     @FXML
     public void lbOriginHover(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbOrigin);
+        if (color.equals("grey")){
+            changeColorGreyHover(lbOrigin);
         }
         else if(color.equals("white")){
             changeColorWhiteHover(lbOrigin);
@@ -317,8 +304,8 @@ public class RootLayoutController {
     @FXML
     public void lbOriginDefault(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbOrigin);
+        if (color.equals("grey")){
+            changeColorGrey(lbOrigin);
         }
         else if(color.equals("white")){
             changeColorWhite(lbOrigin);
@@ -331,8 +318,8 @@ public class RootLayoutController {
     @FXML
     public void lbUplayHover(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbUplay);
+        if (color.equals("grey")){
+            changeColorGreyHover(lbUplay);
         }
         else if(color.equals("white")){
             changeColorWhiteHover(lbUplay);
@@ -345,8 +332,8 @@ public class RootLayoutController {
     @FXML
     public void lbUplayDefault(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbUplay);
+        if (color.equals("grey")){
+            changeColorGrey(lbUplay);
         }
         else if(color.equals("white")){
             changeColorWhite(lbUplay);
@@ -359,8 +346,8 @@ public class RootLayoutController {
     @FXML
     public void lbGameAddHover(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbGameAdd);
+        if (color.equals("grey")){
+            changeColorGreyHover(lbGameAdd);
         }
         else if(color.equals("white")){
             changeColorWhiteHover(lbGameAdd);
@@ -373,8 +360,8 @@ public class RootLayoutController {
     @FXML
     public void lbGameAddDefault(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbGameAdd);
+        if (color.equals("grey")){
+            changeColorGrey(lbGameAdd);
         }
         else if(color.equals("white")){
             changeColorWhite(lbGameAdd);
@@ -387,8 +374,8 @@ public class RootLayoutController {
     @FXML
     public void lbGamePlayDefault(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRed(lbGamePlay);
+        if (color.equals("grey")){
+            changeColorGrey(lbGamePlay);
         }
         else if(color.equals("white")){
             changeColorWhite(lbGamePlay);
@@ -401,8 +388,8 @@ public class RootLayoutController {
     @FXML
     public void lbGamePlayHover(){
         String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
-        if (color.equals("red")){
-            changeColorRedHover(lbGamePlay);
+        if (color.equals("grey")){
+            changeColorGreyHover(lbGamePlay);
         }
         else if(color.equals("white")){
             changeColorWhiteHover(lbGamePlay);
@@ -430,7 +417,7 @@ public class RootLayoutController {
     }
 
     @FXML
-    public void switchSkinBlack(){
+    public void switchSkinWhite(){
         //Wir wissen nicht wieso, aber es funktioniert besser als mit apBackGround, weil es weniger verpixelt ist.
         Image img = new Image("AppLauncher/images/apBack.jpeg");
         spImageView.setImage(img);
@@ -438,17 +425,17 @@ public class RootLayoutController {
     }
 
     @FXML
-    public void switchSkinWhite(){
+    public void switchSkinBlack(){
         Image img = new Image("AppLauncher/images/whiteBack.jpg");
         spImageView.setImage(img);
         changeAllLabelColor("white");
     }
 
     @FXML
-    public void switchSkinRed(){
-        Image img = new Image("AppLauncher/images/redBack.jpg");
+    public void switchSkinGrey(){
+        Image img = new Image("AppLauncher/images/greyBack.jpg");
         spImageView.setImage(img);
-        changeAllLabelColor("red");
+        changeAllLabelColor("grey");
     }
 
     @FXML

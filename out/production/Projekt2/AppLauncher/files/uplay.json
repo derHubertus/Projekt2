@@ -28,5 +28,17 @@
     "path": "C:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\csgo.exe",
     "logoPath": "",
     "name": "csgo"
+  },
+  "5": {
+    "picturePath": "src/AppLauncher/files/Sony Vegas 17",
+    "path": "C:\\Sony Vegas Pro 17\\Sony Vegas 17.exe",
+    "logoPath": "",
+    "name": "Sony Vegas 17"
+  },
+  "6": {
+    "picturePath": "src/AppLauncher/files/Grand Theft Auto 2",
+    "path": "D:\\Games\\GTA 2\\Grand Theft Auto 2.exe",
+    "logoPath": "",
+    "name": "Grand Theft Auto 2"
   }
 }
