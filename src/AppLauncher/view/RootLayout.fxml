@@ -55,7 +55,7 @@
                <bottom>
                   <HBox fx:id="hboxBottom" prefHeight="41.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="SPIEL HINZUFÜGEN" textFill="#ff9200">
+                        <Label fx:id="lbGameAdd" onMouseClicked="#lbGameAddClicked" onMouseEntered="#lbGameAddHover" onMouseExited="#lbGameAddDefault" text="ADD TO LIBRARY" textFill="#ff9200">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
@@ -72,8 +72,8 @@
                   <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fx:id="ivImageSet" cache="true" cacheHint="QUALITY" fitHeight="649.0" fitWidth="1046.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" smooth="false" />
-                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="207.0" onMouseClicked="#launchGame" prefHeight="25.0" prefWidth="114.0" text="Name" textFill="#ff9200" AnchorPane.leftAnchor="14.0" />
-                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#launchGame" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="SPIELEN" textFill="#ff9200" AnchorPane.leftAnchor="14.0">
+                        <Label fx:id="lbGameNameDisplay" layoutX="14.0" layoutY="207.0" onMouseClicked="#launchGame" prefHeight="25.0" prefWidth="114.0" textFill="#ff9200" AnchorPane.leftAnchor="14.0" />
+                        <Label fx:id="lbGamePlay" layoutX="14.0" layoutY="232.0" onMouseClicked="#launchGame" onMouseEntered="#lbGamePlayHover" onMouseExited="#lbGamePlayDefault" text="LAUNCH" textFill="#ff9200" AnchorPane.leftAnchor="14.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
@@ -98,23 +98,30 @@
       </StackPane>
       <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="1280.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="mbItemFile" mnemonicParsing="false" text="File">
             <items>
               <MenuItem fx:id="mbItemClose" mnemonicParsing="false" onAction="#handleExit" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Skin">
+          <Menu fx:id="mbItemSkin" mnemonicParsing="false" text="Skin">
             <items>
-              <MenuItem fx:id="mbItemWhite" mnemonicParsing="false" onAction="#switchSkinBlack" text="Black" />
-                  <MenuItem fx:id="mbItemBlack" mnemonicParsing="false" onAction="#switchSkinWhite" text="White" />
-                  <MenuItem fx:id="mbItemRed" mnemonicParsing="false" onAction="#switchSkinGrey" text="Grey" />
+              <MenuItem fx:id="mbItemBlack" mnemonicParsing="false" onAction="#switchSkinBlack" text="Black" />
+                  <MenuItem fx:id="mbItemWhite" mnemonicParsing="false" onAction="#switchSkinWhite" text="White" />
+                  <MenuItem fx:id="mbItemGrey" mnemonicParsing="false" onAction="#switchSkinGrey" text="Grey" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="mbItemHelp" mnemonicParsing="false" text="Help">
             <items>
               <MenuItem fx:id="mbItemAbout" mnemonicParsing="false" onAction="#handleAbout" text="About" />
             </items>
           </Menu>
+            <Menu fx:id="mbItemLanguage" mnemonicParsing="false" text="Language">
+              <items>
+                  <MenuItem fx:id="mbItemENG" mnemonicParsing="false" onAction="#changeLanguageENG" text="English" />
+                <MenuItem fx:id="mbItemDE" mnemonicParsing="false" onAction="#changeLanguageDE" text="German" />
+                  <MenuItem fx:id="mbItemPL" mnemonicParsing="false" onAction="#changeLanguagePL" text="Polish" />
+              </items>
+            </Menu>
         </menus>
          <cursor>
             <Cursor fx:constant="DEFAULT" />

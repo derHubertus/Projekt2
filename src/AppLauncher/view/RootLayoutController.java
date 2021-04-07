@@ -55,11 +55,27 @@ public class RootLayoutController {
     @FXML
     private MenuItem mbItemClose;
     @FXML
-    private MenuItem mbItemLight;
-    @FXML
-    private MenuItem mbItemDark;
-    @FXML
     private MenuItem mbItemAbout;
+    @FXML
+    private MenuItem mbItemFile;
+    @FXML
+    private MenuItem mbItemSkin;
+    @FXML
+    private MenuItem mbItemHelp;
+    @FXML
+    private MenuItem mbItemBlack;
+    @FXML
+    private MenuItem mbItemWhite;
+    @FXML
+    private MenuItem mbItemGrey;
+    @FXML
+    private MenuItem mbItemLanguage;
+    @FXML
+    private MenuItem mbItemENG;
+    @FXML
+    private MenuItem mbItemDE;
+    @FXML
+    private MenuItem mbItemPL;
     @FXML
     private StackPane sp;
 
@@ -400,23 +416,6 @@ public class RootLayoutController {
     }
 
     @FXML
-    public String urlStart(String s){
-        String url = "https://cdn.cloudflare.steamstatic.com/steam/apps/"+s;
-        return url;
-    }
-
-    @FXML
-    public void paneGetImageFromWeb(){
-        String plusurl = "730/ss_2fcee01bace72bc47a2ad0ba82620588239e93df.jpg";
-        String url = urlStart(plusurl);
-        Image img = new Image(url, apGameInfo.getHeight(), apGameInfo.getWidth(), true, false);
-        ivImageSet.fitWidthProperty().bind(apGameInfo.widthProperty());
-        ivImageSet.fitHeightProperty().bind(apGameInfo.heightProperty());
-        ivImageSet.setPreserveRatio(true);
-        ivImageSet.setImage(img);
-    }
-
-    @FXML
     public void switchSkinWhite(){
         //Wir wissen nicht wieso, aber es funktioniert besser als mit apBackGround, weil es weniger verpixelt ist.
         Image img = new Image("AppLauncher/images/apBack.jpeg");
@@ -436,6 +435,69 @@ public class RootLayoutController {
         Image img = new Image("AppLauncher/images/greyBack.jpg");
         spImageView.setImage(img);
         changeAllLabelColor("grey");
+    }
+
+    @FXML
+    public void changeLanguageENG(){
+        changeLanguage("eng");
+    }
+    @FXML
+    public void changeLanguageDE(){
+        changeLanguage("de");
+    }
+    @FXML
+    public void changeLanguagePL(){
+        changeLanguage("pl");
+    }
+    public void changeLanguage(String identifier){
+        if (identifier.equalsIgnoreCase("eng")){
+            mbItemClose.setText("Close");
+            mbItemFile.setText("File");
+            mbItemHelp.setText("Help");
+            mbItemAbout.setText("About");
+            mbItemSkin.setText("Skin");
+            mbItemWhite.setText("White");
+            mbItemGrey.setText("Grey");
+            mbItemBlack.setText("Black");
+            mbItemLanguage.setText("Language");
+            mbItemDE.setText("German");
+            mbItemENG.setText("English");
+            mbItemPL.setText("Polish");
+            lbGameAdd.setText("ADD TO LIBRARY");
+            lbGamePlay.setText("LAUNCH");
+        }
+        else if (identifier.equalsIgnoreCase("de")){
+            mbItemClose.setText("Schließen");
+            mbItemFile.setText("Datei");
+            mbItemHelp.setText("Hilfe");
+            mbItemAbout.setText("Über uns");
+            mbItemSkin.setText("Aussehen");
+            mbItemWhite.setText("Weiß");
+            mbItemGrey.setText("Grau");
+            mbItemBlack.setText("Schwarz");
+            mbItemLanguage.setText("Sprache");
+            mbItemDE.setText("Deutsch");
+            mbItemENG.setText("Englisch");
+            mbItemPL.setText("Polnisch");
+            lbGameAdd.setText("ZUR BIBLIOTHEK HINZUFÜGEN");
+            lbGamePlay.setText("STARTEN");
+        }
+        else if (identifier.equalsIgnoreCase("pl")){
+            mbItemClose.setText("Zamknij");
+            mbItemFile.setText("Plik");
+            mbItemHelp.setText("Pomoc");
+            mbItemAbout.setText("O nas");
+            mbItemSkin.setText("Skórka");
+            mbItemWhite.setText("Biały");
+            mbItemGrey.setText("Szary");
+            mbItemBlack.setText("Czarny");
+            mbItemLanguage.setText("Język");
+            mbItemDE.setText("Niemiecki");
+            mbItemENG.setText("Angielski");
+            mbItemPL.setText("Polski");
+            lbGameAdd.setText("DODAJ DO BIBLIOTEKI");
+            lbGamePlay.setText("START");
+        }
     }
 
     @FXML
