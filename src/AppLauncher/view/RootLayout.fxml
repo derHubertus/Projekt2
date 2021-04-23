@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -65,9 +66,6 @@
                      </padding>
                   </HBox>
                </bottom>
-               <left>
-                  <ListView fx:id="lvGameList" fixedCellSize="20.0" onMouseClicked="#listViewClick" prefHeight="295.0" prefWidth="239.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER" />
-               </left>
                <center>
                   <AnchorPane fx:id="apGameInfo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
@@ -77,12 +75,7 @@
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                           <image>
-                              <Image url="@../images/logoinside.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="871.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="863.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/logocoba.png" />
                            </image>
@@ -90,6 +83,15 @@
                      </children>
                   </AnchorPane>
                </center>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ListView fx:id="lvGameList" fixedCellSize="20.0" layoutY="39.0" onMouseClicked="#listViewClick" prefHeight="610.0" prefWidth="239.0" style="-fx-background-color: grey;" />
+                        <TextField fx:id="tfSearch" layoutX="66.0" layoutY="2.0" prefHeight="25.0" prefWidth="151.0" />
+                        <Label fx:id="lbSearch" layoutX="14.0" layoutY="6.0" onMouseEntered="#lbSearchHover" onMouseExited="#lbSearchDefault" text="Search:" />
+                     </children>
+                  </AnchorPane>
+               </left>
             </BorderPane>
          </children>
          <opaqueInsets>

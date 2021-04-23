@@ -29,7 +29,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
-        primaryStage.setTitle("Hoomak Launcher™");
+        primaryStage.setTitle("Commerzbank Launcher™");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/logo.png")));
 
         initRootLayout();

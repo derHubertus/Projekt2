@@ -37,6 +37,10 @@ public class RootLayoutController {
     @FXML
     private Label lbGameNameDisplay;
     @FXML
+    private Label lbSearch;
+    @FXML
+    private TextField tfSearch;
+    @FXML
     private ListView<Game> lvGameList = new ListView<>();
     @FXML
     private AnchorPane apGameInfo;
@@ -257,6 +261,7 @@ public class RootLayoutController {
             changeColorWhite(lbGamePlay);
             changeColorWhite(lbGameAdd);
             changeColorWhite(lbGameNameDisplay);
+            changeColorWhite(lbSearch);
         }
         else if (s.equals("grey")){
             changeColorGrey(lbSteam);
@@ -265,6 +270,7 @@ public class RootLayoutController {
             changeColorGrey(lbGamePlay);
             changeColorGrey(lbGameAdd);
             changeColorGrey(lbGameNameDisplay);
+            changeColorGrey(lbSearch);
         }
         else if (s.equals("black")){
             changeColorDefault(lbSteam);
@@ -273,6 +279,7 @@ public class RootLayoutController {
             changeColorDefault(lbGamePlay);
             changeColorDefault(lbGameAdd);
             changeColorDefault(lbGameNameDisplay);
+            changeColorDefault(lbSearch);
         }
     }
     @FXML
@@ -414,6 +421,34 @@ public class RootLayoutController {
             changeColorHover(lbGamePlay);
         }
     }
+    @FXML
+    public void lbSearchDefault(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("grey")){
+            changeColorGrey(lbSearch);
+        }
+        else if(color.equals("white")){
+            changeColorWhite(lbSearch);
+        }
+        else if(color.equals("black")){
+            changeColorDefault(lbSearch);
+        }
+    }
+
+    @FXML
+    public void lbSearchHover(){
+        String color = getImageColor(spImageView.getImage().getUrl().split("/")[spImageView.getImage().getUrl().split("/").length-1]);
+        if (color.equals("grey")){
+            changeColorGreyHover(lbSearch);
+        }
+        else if(color.equals("white")){
+            changeColorWhiteHover(lbSearch);
+        }
+        else if(color.equals("black")){
+            changeColorHover(lbSearch);
+        }
+    }
+
 
     @FXML
     public void switchSkinWhite(){
@@ -441,14 +476,17 @@ public class RootLayoutController {
     public void changeLanguageENG(){
         changeLanguage("eng");
     }
+
     @FXML
     public void changeLanguageDE(){
         changeLanguage("de");
     }
+
     @FXML
     public void changeLanguagePL(){
         changeLanguage("pl");
     }
+
     public void changeLanguage(String identifier){
         if (identifier.equalsIgnoreCase("eng")){
             mbItemClose.setText("Close");
@@ -465,6 +503,7 @@ public class RootLayoutController {
             mbItemPL.setText("Polish");
             lbGameAdd.setText("ADD TO LIBRARY");
             lbGamePlay.setText("LAUNCH");
+            lbSearch.setText("Search:");
         }
         else if (identifier.equalsIgnoreCase("de")){
             mbItemClose.setText("Schließen");
@@ -481,6 +520,7 @@ public class RootLayoutController {
             mbItemPL.setText("Polnisch");
             lbGameAdd.setText("ZUR BIBLIOTHEK HINZUFÜGEN");
             lbGamePlay.setText("STARTEN");
+            lbSearch.setText("Suchen:");
         }
         else if (identifier.equalsIgnoreCase("pl")){
             mbItemClose.setText("Zamknij");
@@ -497,6 +537,7 @@ public class RootLayoutController {
             mbItemPL.setText("Polski");
             lbGameAdd.setText("DODAJ DO BIBLIOTEKI");
             lbGamePlay.setText("START");
+            lbSearch.setText("Szukaj:");
         }
     }
 
