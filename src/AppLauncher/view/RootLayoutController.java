@@ -202,7 +202,6 @@ public class RootLayoutController {
         /*lvGameList.setCellFactory(value -> {
             return new GameCell();
         });*/
-
     }
 
     @FXML
