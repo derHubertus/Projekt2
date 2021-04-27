@@ -8,6 +8,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -91,14 +92,19 @@ public class RootLayoutController {
     private String chosenPlattform;
     private FileChooser fileChooser = new FileChooser();
     private ObservableList<Game> clearList = FXCollections.observableArrayList();
+    private FilteredList<Game> filteredList;
+
 
 
     public void initialize(){
         switchSkinWhite();
         lbSteamClicked();
+
         lvGameList.setCellFactory(value -> {
             return new GameCell();
         });
+
+
         spImageView.setPreserveRatio(false);
         ivImageSet.setPreserveRatio(false);
 
@@ -127,6 +133,23 @@ public class RootLayoutController {
         });
 
     }
+
+    public void searchGame(){
+        // Suchfunktion der ListView
+
+        lvGameList.setItems(filteredList);
+        tfSearch.textProperty().addListener(((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(data -> {
+                if (newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseSearch = newValue.toLowerCase();
+                return data.getName().toLowerCase(Locale.ROOT).contains(lowerCaseSearch);
+            });
+        }));
+    }
+
+
     public void setMain(Main main){
         this.main = main;
     }
@@ -174,6 +197,34 @@ public class RootLayoutController {
         lvGameList.getItems().removeAll();
         chosenPlattform = "steam";
         lvGameList.setItems(plattformSteam.getGames2());
+        filteredList = new FilteredList<>(plattformSteam.getGames2(), data -> true);
+        searchGame();
+        /*lvGameList.setCellFactory(value -> {
+            return new GameCell();
+        });*/
+
+    }
+
+    @FXML
+    public void lbOriginClicked(){
+        lvGameList.getItems().removeAll();
+        chosenPlattform = "origin";
+        lvGameList.setItems(plattformOrigin.getGames2());
+        filteredList = new FilteredList<>(plattformOrigin.getGames2(), data -> true);
+        searchGame();
+        /*lvGameList.setCellFactory(value -> {
+            return new GameCell();
+        });*/
+
+    }
+
+    @FXML
+    public void lbUplayClicked(){
+        lvGameList.getItems().removeAll();
+        chosenPlattform = "uplay";
+        lvGameList.setItems(plattformUplay.getGames2());
+        filteredList = new FilteredList<>(plattformUplay.getGames2(), data -> true);
+        searchGame();
         /*lvGameList.setCellFactory(value -> {
             return new GameCell();
         });*/
@@ -193,28 +244,6 @@ public class RootLayoutController {
     @FXML
     private void handleExit(){
         System.exit(0);
-    }
-
-    @FXML
-    public void lbOriginClicked(){
-        lvGameList.getItems().removeAll();
-        chosenPlattform = "origin";
-        lvGameList.setItems(plattformOrigin.getGames2());
-        /*lvGameList.setCellFactory(value -> {
-            return new GameCell();
-        });*/
-
-    }
-
-    @FXML
-    public void lbUplayClicked(){
-        lvGameList.getItems().removeAll();
-        chosenPlattform = "uplay";
-        lvGameList.setItems(plattformUplay.getGames2());
-        /*lvGameList.setCellFactory(value -> {
-            return new GameCell();
-        });*/
-
     }
 
     public String getImageColor(String s){
@@ -557,20 +586,34 @@ public class RootLayoutController {
 
         double x = event.getScreenX();
         double y = event.getScreenY();
+
         if(lvGameList.getSelectionModel().isEmpty()){
             return;
         }
 
         if(event.getButton() == MouseButton.SECONDARY){
-            System.out.println("\n\n");
-            System.out.println(plattformSteam.getGames());
-            EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, main, x, y);
-            System.out.println(plattformSteam.getGames());
-            plattformSteam.save();
+
+            if(chosenPlattform.equals("uplay")){
+                EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformUplay, main, x, y);
+                lvGameList.setCellFactory(value -> new GameCell());
+                plattformUplay.save();
+            }
+
+            if(chosenPlattform.equals("steam")){
+                EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformSteam, main, x, y);
+                lvGameList.setCellFactory(value -> new GameCell());
+                plattformSteam.save();
+            }
+            if(chosenPlattform.equals("origin")) {
+                EditBox.display(lvGameList.getSelectionModel().getSelectedItem(), plattformOrigin, main, x, y);
+                lvGameList.setCellFactory(value -> new GameCell());
+                plattformOrigin.save();
+            }
+
         }
 
-
     }
+
 
     public String getNameFromPath(String path){
 
